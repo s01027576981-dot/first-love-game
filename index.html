@@ -194,7 +194,7 @@ button {
       alt="지우"
     >
 
-    <div class="dialogue-box">
+        <div class="dialogue-box">
       <div class="dialogue-name">지우</div>
       <div id="dialogueText"></div>
 
@@ -205,12 +205,102 @@ button {
 
   </div>
 
+  <!-- ⭐ 여기부터 등굣길 장면 -->
+  <div id="morningScene" class="screen hidden">
+
+    <img
+      src="images/School-morning.JPG"
+      class="morning-background"
+      alt="등굣길"
+    >
+
+    <img
+      id="morningJiwoo"
+      class="character"
+      src="images/jiwoo-normal.PNG"
+      alt="지우"
+    >
+
+    <img
+      id="morningYoungjun"
+      class="character"
+      src="images/youngjun-normal.jpg"
+      alt="영준"
+      style="display: none;"
+    >
+
+    <div class="dialogue-box">
+      <div id="morningName" class="dialogue-name">지우</div>
+      <div id="morningText">오늘도 평범한 하루가 시작됐네.</div>
+
+      <button id="morningNext" onclick="nextMorningScene()">
+        ▶
+      </button>
+    </div>
+
+  </div>
+  <!-- ⭐ 여기까지 -->
+
+</div>
+
+<script>
+  </div>
+
 </div>
 
 <script>
 
 let dialogueIndex = 0;
 
+  let morningIndex = 0;
+
+const morningDialogues = [
+  ["지우", "오늘도 평범한 하루가 시작됐네."],
+  ["영준", "야, 최지우."],
+  ["지우", "응? 최영준?"],
+  ["영준", "뭐 그렇게 혼자 빨리 가냐?"],
+  ["지우", "그냥 걷는 거거든?"],
+  ["영준", "ㅋㅋㅋ 그래그래."],
+  ["지우", "근데 너 오늘 왜 이렇게 일찍 왔어?"],
+  ["영준", "너 기다리려고 했지."],
+  ["지우", "뭐? 정말이야?"],
+  ["영준", "농담이야."]
+  ["지우",아 뭐야..괜히 좋다말았네.."]
+  ["영준",ㅋㅋ 빨리 학교나 가자"]
+  ["그래 그래~"]
+];
+
+function startMorningScene() {
+  document.getElementById("prologue").classList.add("hidden");
+  document.getElementById("morningScene").classList.remove("hidden");
+
+  morningIndex = 0;
+  updateMorningScene();
+}
+
+function nextMorningScene() {
+  morningIndex++;
+
+  if (morningIndex >= morningDialogues.length) {
+    return;
+  }
+
+  updateMorningScene();
+}
+
+function updateMorningScene() {
+  const name = morningDialogues[morningIndex][0];
+  const text = morningDialogues[morningIndex][1];
+
+  document.getElementById("morningName").innerText = name;
+  document.getElementById("morningText").innerText = text;
+
+  if (name === "영준") {
+    document.getElementById("morningYoungjun").style.display = "block";
+  } else {
+    document.getElementById("morningYoungjun").style.display = "none";
+  }
+}
 const dialogues = [
   "안녕! 나는 최지우야.",
   "나는 평범한 학교생활을 보내고 있는 고등학생이야.",
@@ -249,6 +339,9 @@ function nextDialogue() {
       "그때부터 내 첫사랑이 시작됐다.";
 
     document.getElementById("dialogueNext").style.display = "none";
+
+  startMorningScene();
+    
     return;
   }
 
