@@ -50,6 +50,7 @@ button {
   display: none;
 }
 
+/* 프로필 */
 .profile {
   background: white;
   border-radius: 20px;
@@ -80,6 +81,7 @@ button {
   margin-top: 15px;
 }
 
+/* 프롤로그 */
 #prologue {
   position: relative;
   min-height: 100vh;
@@ -94,6 +96,7 @@ button {
   height: 65vh;
   max-width: 90%;
   object-fit: contain;
+  z-index: 1;
 }
 
 .dialogue-box {
@@ -114,18 +117,42 @@ button {
   margin-bottom: 8px;
 }
 
-#dialogueText {
+#dialogueText,
+#morningText {
   font-size: 18px;
   line-height: 1.6;
 }
 
-#dialogueNext {
+#dialogueNext,
+#morningNext {
   margin-top: 10px;
   background: #ff8fbd;
   color: white;
   padding: 8px 22px;
   border-radius: 20px;
 }
+
+/* 등굣길 */
+#morningScene {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 0;
+}
+
+.morning-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+#morningScene .character {
+  z-index: 2;
+}
+
 </style>
 </head>
 
@@ -146,7 +173,12 @@ button {
   <!-- 지우 프로필 -->
   <div id="jiwooProfile" class="screen hidden">
     <div class="profile">
-      <img src="images/jiwoo-profile.PNG" alt="지우 프로필">
+
+      <img
+        src="images/jiwoo-profile.PNG"
+        alt="지우 프로필"
+      >
+
       <h2>최지우</h2>
       <p>나이: 18</p>
       <p>성별: 여</p>
@@ -160,13 +192,19 @@ button {
       <button class="next-btn" onclick="showYoungjunProfile()">
         다음
       </button>
+
     </div>
   </div>
 
   <!-- 영준 프로필 -->
   <div id="youngjunProfile" class="screen hidden">
     <div class="profile">
-      <img src="images/youngjun-profile.PNG" alt="영준 프로필">
+
+      <img
+        src="images/youngjun-profile.PNG"
+        alt="영준 프로필"
+      >
+
       <h2>최영준</h2>
       <p>나이: 18</p>
       <p>성별: 남</p>
@@ -181,6 +219,7 @@ button {
       <button class="next-btn" onclick="startPrologue()">
         GAME START
       </button>
+
     </div>
   </div>
 
@@ -194,18 +233,24 @@ button {
       alt="지우"
     >
 
-        <div class="dialogue-box">
+    <div class="dialogue-box">
+
       <div class="dialogue-name">지우</div>
+
       <div id="dialogueText"></div>
 
-      <button id="dialogueNext" onclick="nextDialogue()">
+      <button
+        id="dialogueNext"
+        onclick="nextDialogue()"
+      >
         ▶
       </button>
+
     </div>
 
   </div>
 
-  <!-- ⭐ 여기부터 등굣길 장면 -->
+  <!-- 등굣길 -->
   <div id="morningScene" class="screen hidden">
 
     <img
@@ -230,20 +275,27 @@ button {
     >
 
     <div class="dialogue-box">
-      <div id="morningName" class="dialogue-name">지우</div>
-      <div id="morningText">오늘도 평범한 하루가 시작됐네.</div>
 
-      <button id="morningNext" onclick="nextMorningScene()">
+      <div
+        id="morningName"
+        class="dialogue-name"
+      >
+        지우
+      </div>
+
+      <div id="morningText">
+        오늘도 평범한 하루가 시작됐네.
+      </div>
+
+      <button
+        id="morningNext"
+        onclick="nextMorningScene()"
+      >
         ▶
       </button>
+
     </div>
 
-  </div>
-  <!-- ⭐ 여기까지 -->
-
-</div>
-
-<script>
   </div>
 
 </div>
@@ -252,55 +304,6 @@ button {
 
 let dialogueIndex = 0;
 
-  let morningIndex = 0;
-
-const morningDialogues = [
-  ["지우", "오늘도 평범한 하루가 시작됐네."],
-  ["영준", "야, 최지우."],
-  ["지우", "응? 최영준?"],
-  ["영준", "뭐 그렇게 혼자 빨리 가냐?"],
-  ["지우", "그냥 걷는 거거든?"],
-  ["영준", "ㅋㅋㅋ 그래그래."],
-  ["지우", "근데 너 오늘 왜 이렇게 일찍 왔어?"],
-  ["영준", "너 기다리려고 했지."],
-  ["지우", "뭐? 정말이야?"],
-  ["영준", "농담이야."]
-  ["지우",아 뭐야..괜히 좋다말았네.."]
-  ["영준",ㅋㅋ 빨리 학교나 가자"]
-  ["그래 그래~"]
-];
-
-function startMorningScene() {
-  document.getElementById("prologue").classList.add("hidden");
-  document.getElementById("morningScene").classList.remove("hidden");
-
-  morningIndex = 0;
-  updateMorningScene();
-}
-
-function nextMorningScene() {
-  morningIndex++;
-
-  if (morningIndex >= morningDialogues.length) {
-    return;
-  }
-
-  updateMorningScene();
-}
-
-function updateMorningScene() {
-  const name = morningDialogues[morningIndex][0];
-  const text = morningDialogues[morningIndex][1];
-
-  document.getElementById("morningName").innerText = name;
-  document.getElementById("morningText").innerText = text;
-
-  if (name === "영준") {
-    document.getElementById("morningYoungjun").style.display = "block";
-  } else {
-    document.getElementById("morningYoungjun").style.display = "none";
-  }
-}
 const dialogues = [
   "안녕! 나는 최지우야.",
   "나는 평범한 학교생활을 보내고 있는 고등학생이야.",
@@ -313,21 +316,43 @@ const dialogues = [
 ];
 
 function startGame() {
-  document.getElementById("startScreen").classList.add("hidden");
-  document.getElementById("jiwooProfile").classList.remove("hidden");
+
+  document
+    .getElementById("startScreen")
+    .classList.add("hidden");
+
+  document
+    .getElementById("jiwooProfile")
+    .classList.remove("hidden");
+
 }
 
 function showYoungjunProfile() {
-  document.getElementById("jiwooProfile").classList.add("hidden");
-  document.getElementById("youngjunProfile").classList.remove("hidden");
+
+  document
+    .getElementById("jiwooProfile")
+    .classList.add("hidden");
+
+  document
+    .getElementById("youngjunProfile")
+    .classList.remove("hidden");
+
 }
 
 function startPrologue() {
-  document.getElementById("youngjunProfile").classList.add("hidden");
-  document.getElementById("prologue").classList.remove("hidden");
+
+  document
+    .getElementById("youngjunProfile")
+    .classList.add("hidden");
+
+  document
+    .getElementById("prologue")
+    .classList.remove("hidden");
 
   dialogueIndex = 0;
+
   updateDialogue();
+
 }
 
 function nextDialogue() {
@@ -335,28 +360,135 @@ function nextDialogue() {
   dialogueIndex++;
 
   if (dialogueIndex >= dialogues.length) {
-    document.getElementById("dialogueText").innerText =
+
+    document
+      .getElementById("dialogueText")
+      .innerText =
       "그때부터 내 첫사랑이 시작됐다.";
 
-    document.getElementById("dialogueNext").style.display = "none";
+    document
+      .getElementById("dialogueNext")
+      .style.display = "none";
 
-  startMorningScene();
-    
+    setTimeout(startMorningScene, 800);
+
     return;
   }
 
   updateDialogue();
+
 }
 
 function updateDialogue() {
 
-  document.getElementById("dialogueText").innerText =
+  document
+    .getElementById("dialogueText")
+    .innerText =
     dialogues[dialogueIndex];
 
   if (dialogueIndex >= 6) {
-  document.getElementById("jiwooCharacter").src =
-    "images/jiwoo_sparkle.png";
+
+    document
+      .getElementById("jiwooCharacter")
+      .src =
+      "images/jiwoo_sparkle.png";
+
   }
+
+}
+
+let morningIndex = 0;
+
+const morningDialogues = [
+
+  ["지우", "오늘도 평범한 하루가 시작됐네."],
+
+  ["영준", "야, 최지우."],
+
+  ["지우", "응? 최영준?"],
+
+  ["영준", "뭐 그렇게 혼자 빨리 가냐?"],
+
+  ["지우", "그냥 걷는 거거든?"],
+
+  ["영준", "ㅋㅋㅋ 그래그래."],
+
+  ["지우", "근데 너 오늘 왜 이렇게 일찍 왔어?"],
+
+  ["영준", "너 기다리려고 했지."],
+
+  ["지우", "뭐? 정말이야?"],
+
+  ["영준", "농담이야."],
+
+  ["지우", "아 뭐야.. 괜히 좋다 말았네.."],
+
+  ["영준", "ㅋㅋ 빨리 학교나 가자."],
+
+  ["지우", "그래 그래~"]
+
+];
+
+function startMorningScene() {
+
+  document
+    .getElementById("prologue")
+    .classList.add("hidden");
+
+  document
+    .getElementById("morningScene")
+    .classList.remove("hidden");
+
+  morningIndex = 0;
+
+  updateMorningScene();
+
+}
+
+function nextMorningScene() {
+
+  morningIndex++;
+
+  if (morningIndex >= morningDialogues.length) {
+
+    return;
+
+  }
+
+  updateMorningScene();
+
+}
+
+function updateMorningScene() {
+
+  const name =
+    morningDialogues[morningIndex][0];
+
+  const text =
+    morningDialogues[morningIndex][1];
+
+  document
+    .getElementById("morningName")
+    .innerText = name;
+
+  document
+    .getElementById("morningText")
+    .innerText = text;
+
+  if (name === "영준") {
+
+    document
+      .getElementById("morningYoungjun")
+      .style.display = "block";
+
+  } else {
+
+    document
+      .getElementById("morningYoungjun")
+      .style.display = "none";
+
+  }
+
 }
 
 </script>
