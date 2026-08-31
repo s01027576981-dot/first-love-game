@@ -1,1 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>첫사랑 이루기</title>
 
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #ffd9e8;
+  font-family: sans-serif;
+}
+
+#game {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen {
+  width: 100%;
+  max-width: 600px;
+  min-height: 100vh;
+  background: #ffd9e8;
+  text-align: center;
+  padding: 20px;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.start-img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.profile {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.profile img {
+  width: 180px;
+  max-width: 70%;
+  border-radius: 15px;
+}
+
+.profile h2 {
+  margin: 12px 0;
+}
+
+.profile p {
+  margin: 6px 0;
+}
+
+.next-btn {
+  background: #ff8fbd;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  margin-top: 15px;
+}
+
+#prologue {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.character {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 65vh;
+  max-width: 90%;
+  object-fit: contain;
+}
+
+.dialogue-box {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: 20px;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  z-index: 5;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.dialogue-name {
+  font-weight: bold;
+  color: #ff6fa8;
+  margin-bottom: 8px;
+}
+
+#dialogueText {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+#dialogueNext {
+  margin-top: 10px;
+  background: #ff8fbd;
+  color: white;
+  padding: 8px 22px;
+  border-radius: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="game">
+
+  <!-- START -->
+  <div id="startScreen" class="screen">
+    <img
+      src="images/start photo.PNG"
+      class="start-img"
+      onclick="startGame()"
+      alt="첫사랑 이루기 시작"
+    >
+  </div>
+
+  <!-- 지우 프로필 -->
+  <div id="jiwooProfile" class="screen hidden">
+    <div class="profile">
+      <img src="images/jiwoo-profile.PNG" alt="지우 프로필">
+      <h2>최지우</h2>
+      <p>나이: 18</p>
+      <p>성별: 여</p>
+      <p>생일: 5/16</p>
+      <p>MBTI: ENFJ</p>
+      <p>혈액형: AB형</p>
+      <p>성격: 차분하고 활발한 성격</p>
+      <p>얼굴상: 강아지상</p>
+      <p>“어느날 부터 이상하게 왠지.. 영준이만 보면 가슴이 두근거려..!”</p>
+
+      <button class="next-btn" onclick="showYoungjunProfile()">
+        다음
+      </button>
+    </div>
+  </div>
+
+  <!-- 영준 프로필 -->
+  <div id="youngjunProfile" class="screen hidden">
+    <div class="profile">
+      <img src="images/youngjun-profile.PNG" alt="영준 프로필">
+      <h2>최영준</h2>
+      <p>나이: 18</p>
+      <p>성별: 남</p>
+      <p>생일: 8/17</p>
+      <p>MBTI: ISTP</p>
+      <p>혈액형: AB형</p>
+      <p>성격: 차갑고 무뚝뚝한 성격</p>
+      <p>(지우에겐 다정하고 착한 성격)</p>
+      <p>얼굴상: 고양이상</p>
+      <p>“뭐지.. 사랑이란 건 1도 느껴보지 못한 내가.. 왜 지우만 보면… 떨리는 걸까..”</p>
+
+      <button class="next-btn" onclick="startPrologue()">
+        GAME START
+      </button>
+    </div>
+  </div>
+
+  <!-- 프롤로그 -->
+  <div id="prologue" class="screen hidden">
+
+    <img
+      id="jiwooCharacter"
+      class="character"
+      src="images/jiwoo-normal.PNG"
+      alt="지우"
+    >
+
+    <div class="dialogue-box">
+      <div class="dialogue-name">지우</div>
+      <div id="dialogueText"></div>
+
+      <button id="dialogueNext" onclick="nextDialogue()">
+        ▶
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+let dialogueIndex = 0;
+
+const dialogues = [
+  "안녕! 나는 최지우야.",
+  "나는 평범한 학교생활을 보내고 있는 고등학생이야.",
+  "친구들과 수다도 떨고, 같이 웃고 떠드는 그런 평범한 하루.",
+  "그리고 나에게는 아주 친한 남사친이 한 명 있어.",
+  "그 이름은… 최영준.",
+  "어릴 때부터 알고 지낸 정말 편한 친구야.",
+  "그런데 어느 순간부터……",
+  "영준이만 보면 이상하게 가슴이 두근거리기 시작했어."
+];
+
+function startGame() {
+  document.getElementById("startScreen").classList.add("hidden");
+  document.getElementById("jiwooProfile").classList.remove("hidden");
+}
+
+function showYoungjunProfile() {
+  document.getElementById("jiwooProfile").classList.add("hidden");
+  document.getElementById("youngjunProfile").classList.remove("hidden");
+}
+
+function startPrologue() {
+  document.getElementById("youngjunProfile").classList.add("hidden");
+  document.getElementById("prologue").classList.remove("hidden");
+
+  dialogueIndex = 0;
+  updateDialogue();
+}
+
+function nextDialogue() {
+
+  dialogueIndex++;
+
+  if (dialogueIndex >= dialogues.length) {
+    document.getElementById("dialogueText").innerText =
+      "그때부터 내 첫사랑이 시작됐다.";
+
+    document.getElementById("dialogueNext").style.display = "none";
+    return;
+  }
+
+  updateDialogue();
+}
+
+function updateDialogue() {
+
+  document.getElementById("dialogueText").innerText =
+    dialogues[dialogueIndex];
+
+  if (dialogueIndex >= 6) {
+    document.getElementById("jiwooCharacter").src =
+      "images/jiwoo_sparkle.PNG";
+  }
+}
+
+</script>
+
+</body>
+</html>
