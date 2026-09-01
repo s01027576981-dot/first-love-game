@@ -273,10 +273,10 @@ button {
     <img
   id="morningJiwoo"
   class="character"
-  src="images/jiwoo-embarrassed.png"
+  src="images/jiwoo-normal.PNG"
   alt="지우"
 >
-
+    
     <img
   id="morningjiwooEmbarrassed"
   class="character"
@@ -494,64 +494,57 @@ function nextMorningScene() {
   document.getElementById("morningText").innerText = text;
 
   const jiwoo = document.getElementById("morningJiwoo");
+  const jiwooEmbarrassed = document.getElementById("morningjiwooEmbarrassed");
+
   const youngjun = document.getElementById("morningYoungjun");
-
-  const jiwooEmbarrassed =
-    document.getElementById("morningJiwooEmbarrassed");
-
-  const youngjunEmbarrassed =
-    document.getElementById("morningYoungjunEmbarrassed");
+  const youngjunEmbarrassed = document.getElementById("morningYoungjunEmbarrassed");
 
 
-  // 전부 먼저 숨김
+  // 먼저 네 장면을 전부 숨김
   jiwoo.style.display = "none";
-  youngjun.style.display = "none";
   jiwooEmbarrassed.style.display = "none";
+  youngjun.style.display = "none";
   youngjunEmbarrassed.style.display = "none";
 
 
-  // 지우
+  // 지우만 말할 때
   if (name === "지우") {
 
     jiwoo.style.display = "block";
-    jiwoo.src = "images/jiwoo-normal.PNG";
 
   }
 
 
-  // 영준
+  // 영준만 말할 때
   else if (name === "영준") {
 
     youngjun.style.display = "block";
-    youngjun.src = "images/youngjun-normal.png";
 
   }
 
 
-  // ⭐ 둘이 함께
-    else if (name === "둘이 함께") {
+  // ⭐ 둘이 동시에 말할 때
+  else if (name === "둘이 함께") {
 
-  jiwoo.style.display = "block";
-  youngjun.style.display = "block";
+    jiwooEmbarrassed.style.display = "block";
+    youngjunEmbarrassed.style.display = "block";
 
-  jiwoo.src = "images/jiwoo-embarrassed.png";
-  youngjun.src = "images/youngjun-embarrassed.png";
+    jiwooEmbarrassed.style.left = "30%";
+    youngjunEmbarrassed.style.left = "70%";
 
-  jiwoo.style.left = "30%";
-  youngjun.style.left = "70%";
+    jiwooEmbarrassed.style.zIndex = "4";
+    youngjunEmbarrassed.style.zIndex = "4";
 
-  jiwoo.style.zIndex = "4";
-  youngjun.style.zIndex = "4";
-}
-  
+  }
+
+
   // 나레이션
   else if (name === "나레이션") {
 
-    // 둘 다 숨김
+    // 모두 숨겨진 상태 유지
 
   }
 }
-
 
 </script>
 
