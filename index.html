@@ -437,11 +437,9 @@ const morningDialogues = [
 
   ["영준", "뭐?!"],
 
-  ["지우", "으악!! 지각이다!!"],
+  ["둘이 함께", "으악!! 지각이다!!"],
 
-  ["영준", "으악!! 지각이다!!"],
-
-  ["나레이션", "우리는 그렇게 지각인 걸 알고 죽어라 달렸다."]
+["나레이션", "우리는 그렇게 지각인 걸 알고 죽어라 달렸다."]
 
 ];
 
@@ -470,8 +468,7 @@ function nextMorningScene() {
 
 }
 
-
-function updateMorningScene() {
+    function updateMorningScene() {
 
   const name = morningDialogues[morningIndex][0];
   const text = morningDialogues[morningIndex][1];
@@ -483,22 +480,41 @@ function updateMorningScene() {
   const youngjun = document.getElementById("morningYoungjun");
 
 
+  // 지우만 말할 때
   if (name === "지우") {
 
     jiwoo.style.display = "block";
     youngjun.style.display = "none";
 
+    jiwoo.src = "images/jiwoo-normal.PNG";
+
   }
 
 
+  // 영준만 말할 때
   else if (name === "영준") {
 
     jiwoo.style.display = "none";
     youngjun.style.display = "block";
 
+    youngjun.src = "images/youngjun-normal.png";
+
   }
 
 
+  // 둘이 동시에 말할 때
+  else if (name === "둘이 함께") {
+
+    jiwoo.style.display = "block";
+    youngjun.style.display = "block";
+
+    jiwoo.src = "images/Jiwoo- embarrassed.png";
+    youngjun.src = "images/youngjun-embarrassed.png";
+
+  }
+
+
+  // 나레이션
   else if (name === "나레이션") {
 
     jiwoo.style.display = "none";
