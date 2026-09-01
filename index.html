@@ -459,56 +459,50 @@ function startMorningScene() {
   updateMorningScene();
 }
 
-function nextMorningScene() {
+  function nextMorningScene() {
 
   morningIndex++;
 
   if (morningIndex >= morningDialogues.length) {
     return;
   }
-
+    
   updateMorningScene();
-}
+  }
 
-  function updateMorningScene() {
+function updateMorningScene() {
 
-  const name = morningDialogues[morningIndex][0];
-  const text = morningDialogues[morningIndex][1];
+  const name =
+    morningDialogues[morningIndex][0];
+
+  const text =
+    morningDialogues[morningIndex][1];
 
   document.getElementById("morningName").innerText = name;
   document.getElementById("morningText").innerText = text;
 
-  const jiwoo = document.getElementById("morningJiwoo");
-  const youngjun = document.getElementById("morningYoungjun");
+  const jiwoo =
+    document.getElementById("morningJiwoo");
 
-  // 기본 상태: 둘 다 숨김
-  jiwoo.style.display = "none";
-  youngjun.style.display = "none";
+  const youngjun =
+    document.getElementById("morningYoungjun");
 
-  // 영준 대사
-  if (name === "영준") {
-    youngjun.style.display = "block";
-  }
 
-  // 지우 대사
-  else if (name === "지우") {
-    jiwoo.style.display = "block";
-  }
-
-  // ⭐ 둘이 동시에 당황하는 장면
-  if (text === "으악!! 지각이다!!") {
-
-    jiwoo.src = "images/Jiwoo- embarrassed.png";
-    youngjun.src = "images/youngjun-embarrassed.png";
+  if (name === "지우") {
 
     jiwoo.style.display = "block";
-    youngjun.style.display = "block";
-  }
+    youngjun.style.display = "none";
 
-  // 나레이션
-  if (name === "나레이션") {
+  } else if (name === "영준") {
+
+    jiwoo.style.display = "none";
+    youngjun.style.display = "block";
+
+  } else if (name === "나레이션") {
+
     jiwoo.style.display = "none";
     youngjun.style.display = "none";
+
   }
 
 }
