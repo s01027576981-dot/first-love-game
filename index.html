@@ -367,8 +367,6 @@ button {
 
 </div>
 
-
-
 <!-- ==================================================
      지우 프로필
 ================================================== -->
@@ -412,7 +410,6 @@ button {
   </div>
 
 </div>
-
 
 
 <!-- ==================================================
@@ -1529,6 +1526,10 @@ document
 
   });
 
+   document.getElementById("startButton").addEventListener("click", function() {
+  document.getElementById("startScreen").classList.add("hidden");
+  document.getElementById("jiwooProfile").classList.remove("hidden");
+});
 
 </script>
 
