@@ -278,6 +278,15 @@ button {
     >
 
     <img
+  id="morningJiwooEmbarrassed"
+  class="character"
+  src="images/jiwoo- embarrassed.png"
+  alt="지우 당황"
+  style="display: none;"
+>
+    
+
+    <img
       id="morningYoungjun"
       class="character"
       src="images/youngjun-normal.png"
@@ -285,6 +294,14 @@ button {
       style="display: none;"
     >
 
+    <img
+  id="morningYoungjunEmbarrassed"
+  class="character"
+  src="images/youngjun-embarrassed.png"
+  alt="영준 당황"
+  style="display: none;"
+>
+    
     <div class="dialogue-box">
 
       <div
@@ -473,68 +490,67 @@ function nextMorningScene() {
   const name = morningDialogues[morningIndex][0];
   const text = morningDialogues[morningIndex][1];
 
-  const morningName = document.getElementById("morningName");
-  const morningText = document.getElementById("morningText");
+  document.getElementById("morningName").innerText = name;
+  document.getElementById("morningText").innerText = text;
 
   const jiwoo = document.getElementById("morningJiwoo");
   const youngjun = document.getElementById("morningYoungjun");
 
-  morningName.innerText = name;
-  morningText.innerText = text;
+  const jiwooEmbarrassed =
+    document.getElementById("morningJiwooEmbarrassed");
+
+  const youngjunEmbarrassed =
+    document.getElementById("morningYoungjunEmbarrassed");
 
 
-  // 지우만
+  // 전부 먼저 숨김
+  jiwoo.style.display = "none";
+  youngjun.style.display = "none";
+  jiwooEmbarrassed.style.display = "none";
+  youngjunEmbarrassed.style.display = "none";
+
+
+  // 지우
   if (name === "지우") {
 
     jiwoo.style.display = "block";
-    youngjun.style.display = "none";
-
     jiwoo.src = "images/jiwoo-normal.PNG";
 
   }
 
 
-  // 영준만
+  // 영준
   else if (name === "영준") {
 
-    jiwoo.style.display = "none";
     youngjun.style.display = "block";
-
     youngjun.src = "images/youngjun-normal.png";
 
   }
 
 
-  // ★ 둘이 동시에 말하는 장면
+  // ⭐ 둘이 함께
   else if (name === "둘이 함께") {
 
-    // 두 사람 모두 표시
-    jiwoo.style.display = "block";
-    youngjun.style.display = "block";
+    jiwooEmbarrassed.style.display = "block";
+    youngjunEmbarrassed.style.display = "block";
 
-    // 당황한 표정
-    jiwoo.src = "images/jiwoo- embarrassed.png";
-    youngjun.src = "images/youngjun-embarrassed.png";
+    jiwooEmbarrassed.style.left = "30%";
+    youngjunEmbarrassed.style.left = "70%";
 
-    // 좌우로 확실하게 배치
-    jiwoo.style.left = "30%";
-    youngjun.style.left = "70%";
+    jiwooEmbarrassed.style.zIndex = "5";
+    youngjunEmbarrassed.style.zIndex = "5";
 
-    // 둘 다 위에 표시
-    jiwoo.style.zIndex = "4";
-    youngjun.style.zIndex = "4";
   }
 
 
   // 나레이션
   else if (name === "나레이션") {
 
-    jiwoo.style.display = "none";
-    youngjun.style.display = "none";
+    // 둘 다 숨김
 
   }
-
 }
+
 
 </script>
 
