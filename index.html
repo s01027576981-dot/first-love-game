@@ -338,7 +338,7 @@ button {
   src="images/school-special-1.PNG"
   alt="명장면 1"
   style="
-  display:none;
+  display:block;
   position:absolute;
     inset:0;
     width:100%;
@@ -347,6 +347,7 @@ button {
     z-index:100;
   "
 >
+
 <!-- 학교 대화창 -->
 <div
   id="schoolDialogueBox"
@@ -453,7 +454,7 @@ const morningDialogues = [
   ["영준", "너 기다리려고 했지."],
   ["지우", "뭐? 정말이야?"],
   ["영준", "농담이야."],
-  ["지우", "아 뭐야.. 괜히 좋다 말았네.."],
+  ["지우", '아 뭐야.. 괜히 좋다 말았네..'],
   ["지우", "그래 그래~"],
   ["지우", "……잠깐만."],
   ["영준", "왜?"],
@@ -576,130 +577,151 @@ function startSchoolScene() {
 }
 /* 학교에서 ▶를 누를 때 */
 function nextSchoolScene() {
+
   const background =
     document.getElementById("schoolBackground");
+
   const specialImage =
     document.getElementById("schoolSpecialImage");
+
   const jiwoo =
     document.getElementById("schoolJiwoo");
+
   const youngjun =
     document.getElementById("schoolYoungjun");
+
   const dialogueBox =
     document.getElementById("schoolDialogueBox");
+
   const nextButton =
     document.getElementById("schoolNext");
+
+  const schoolName =
+    document.getElementById("schoolName");
+
+  const schoolText =
+    document.getElementById("schoolText");
+
+
   schoolIndex++;
-  /* 1
-     지우 → 영준
-  */
+
+
+  // ① 지우
   if (schoolIndex === 1) {
+
     jiwoo.style.display = "none";
     youngjun.style.display = "block";
-    document
-      .getElementById("schoolName")
-      .innerText = "영준";
-    document
-      .getElementById("schoolText")
-      .innerText =
+
+    schoolName.innerText = "영준";
+    schoolText.innerText =
       "그러게 누가 늦잠 자랬냐?";
+
     return;
   }
-  /* 2
-     영준 → 지우
-  */
+
+
+  // ② 영준 → 지우
   if (schoolIndex === 2) {
+
     jiwoo.style.display = "block";
     youngjun.style.display = "none";
-    document
-      .getElementById("schoolName")
-      .innerText = "지우";
-    document
-      .getElementById("schoolText")
-      .innerText =
+
+    schoolName.innerText = "지우";
+    schoolText.innerText =
       "너도 늦게 나온 주제에 왜 따지고 난리냐!";
+
     return;
   }
-  /* 3
-     지우 → 영준
-  */
+
+
+  // ③ 지우 → 영준
   if (schoolIndex === 3) {
+
     jiwoo.style.display = "none";
     youngjun.style.display = "block";
-    document
-      .getElementById("schoolName")
-      .innerText = "영준";
-    document
-      .getElementById("schoolText")
-      .innerText =
+
+    schoolName.innerText = "영준";
+    schoolText.innerText =
       "난 너 기다렸는데?";
+
     return;
   }
-  /* 4
-     영준 → 지우
-  */
+
+
+  // ④ 영준 → 지우
   if (schoolIndex === 4) {
+
     jiwoo.style.display = "block";
     youngjun.style.display = "none";
-    document
-      .getElementById("schoolName")
-      .innerText = "지우";
-    document
-      .getElementById("schoolText")
-      .innerText =
+
+    schoolName.innerText = "지우";
+    schoolText.innerText =
       "아 몰라 너도 늦은 건 똑같거든?!";
+
     return;
   }
-  /* 5
-     영준: 그런데…
-  */
+
+
+  // ⑤ 영준
   if (schoolIndex === 5) {
+
     jiwoo.style.display = "none";
     youngjun.style.display = "block";
-    document
-      .getElementById("schoolName")
-      .innerText = "영준";
-    document
-      .getElementById("schoolText")
-      .innerText =
+
+    schoolName.innerText = "영준";
+    schoolText.innerText =
       "그런데…";
+
     return;
   }
-  /* 6
-     명장면 등장
-  */
+
+
+  // ⑥ 명장면
   if (schoolIndex === 6) {
+
     background.style.display = "none";
+
     jiwoo.style.display = "none";
     youngjun.style.display = "none";
-    dialogueBox.style.display = "none";
+
     specialImage.style.display = "block";
-    /*
-      명장면에서는 대화창을 완전히 숨김.
-      화면에는 사진만 보임.
-    */
+
+    // ⭐ 명장면에서도 ▶ 버튼이 보이게 함
+    dialogueBox.style.display = "block";
+
+    schoolName.innerText = "";
+    schoolText.innerText = "";
+
+    nextButton.style.display = "block";
+
     return;
   }
-  /* 7
-     명장면에서 ▶
-     다시 교실로 돌아오고
-     영준 질문 + 선택지
-  */
- if (schoolIndex === 7) {
-  specialImage.style.display = "none";
-  background.style.display = "block";
-  jiwoo.style.display = "none";
-  youngjun.style.display = "block";
-  dialogueBox.style.display = "block";
 
-  document.getElementById("schoolName").innerText = "영준";
 
-  document.getElementById("schoolText").innerText =
-    "너 왜 아까 내가 너 기다린다고 했을 때 왜 이렇게 좋아했냐? 나 좋아하는 것 같이?";
+  // ⑦ 명장면 다음 → 다시 교실
+  if (schoolIndex === 7) {
 
-  nextButton.style.display = "none";
-  showSchoolChoices();
-  return;
-}
+    specialImage.style.display = "none";
+
+    background.style.display = "block";
+
+    jiwoo.style.display = "none";
+    youngjun.style.display = "block";
+
+    dialogueBox.style.display = "block";
+
+    schoolName.innerText = "영준";
+
+    schoolText.innerText =
+      "너 왜 아까 내가 너 기다린다고 했을 때 왜 이렇게 좋아했냐? 나 좋아하는 것 같이?";
+
+    nextButton.style.display = "none";
+
+    showSchoolChoices();
+
+    return;
+  }
+
 }
 /* =========================
    선택지
