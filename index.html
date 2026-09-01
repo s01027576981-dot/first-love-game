@@ -460,11 +460,7 @@ function nextMorningScene() {
 
   }
 
-  updateMorningScene();
-
-}
-
-function updateMorningScene() {
+  function updateMorningScene() {
 
   const name =
     morningDialogues[morningIndex][0];
@@ -472,25 +468,18 @@ function updateMorningScene() {
   const text =
     morningDialogues[morningIndex][1];
 
-  document
-    .getElementById("morningName")
-    .innerText = name;
-
-  document
-    .getElementById("morningText")
-    .innerText = text;
+  document.getElementById("morningName").innerText = name;
+  document.getElementById("morningText").innerText = text;
 
   if (name === "영준") {
 
-    document
-      .getElementById("morningYoungjun")
-      .style.display = "block";
+    document.getElementById("morningYoungjun").style.display = "block";
+    document.getElementById("morningJiwoo").style.display = "none";
 
   } else {
 
-    document
-      .getElementById("morningYoungjun")
-      .style.display = "none";
+    document.getElementById("morningYoungjun").style.display = "none";
+    document.getElementById("morningJiwoo").style.display = "block";
 
   }
 
