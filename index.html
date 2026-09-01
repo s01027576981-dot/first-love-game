@@ -309,7 +309,6 @@ button {
   </div>
 
 </div>
-
 <script>
 
 let dialogueIndex = 0;
@@ -327,39 +326,25 @@ const dialogues = [
 
 function startGame() {
 
-  document
-    .getElementById("startScreen")
-    .classList.add("hidden");
-
-  document
-    .getElementById("jiwooProfile")
-    .classList.remove("hidden");
+  document.getElementById("startScreen").classList.add("hidden");
+  document.getElementById("jiwooProfile").classList.remove("hidden");
 
 }
 
 function showYoungjunProfile() {
 
-  document
-    .getElementById("jiwooProfile")
-    .classList.add("hidden");
-
-  document
-    .getElementById("youngjunProfile")
-    .classList.remove("hidden");
+  document.getElementById("jiwooProfile").classList.add("hidden");
+  document.getElementById("youngjunProfile").classList.remove("hidden");
 
 }
 
 function startPrologue() {
 
-  document
-    .getElementById("youngjunProfile")
-    .classList.add("hidden");
-
-  document
-    .getElementById("prologue")
-    .classList.remove("hidden");
+  document.getElementById("youngjunProfile").classList.add("hidden");
+  document.getElementById("prologue").classList.remove("hidden");
 
   dialogueIndex = 0;
+  document.getElementById("dialogueNext").style.display = "inline-block";
 
   updateDialogue();
 
@@ -371,14 +356,10 @@ function nextDialogue() {
 
   if (dialogueIndex >= dialogues.length) {
 
-    document
-      .getElementById("dialogueText")
-      .innerText =
+    document.getElementById("dialogueText").innerText =
       "그때부터 내 첫사랑이 시작됐다.";
 
-    document
-      .getElementById("dialogueNext")
-      .style.display = "none";
+    document.getElementById("dialogueNext").style.display = "none";
 
     setTimeout(startMorningScene, 800);
 
@@ -391,21 +372,22 @@ function nextDialogue() {
 
 function updateDialogue() {
 
-  document
-    .getElementById("dialogueText")
-    .innerText =
+  document.getElementById("dialogueText").innerText =
     dialogues[dialogueIndex];
 
   if (dialogueIndex >= 6) {
 
-    document
-      .getElementById("jiwooCharacter")
-      .src =
+    document.getElementById("jiwooCharacter").src =
       "images/jiwoo_sparkle.png";
 
   }
 
 }
+
+
+/* =========================
+   등굣길 장면
+========================= */
 
 let morningIndex = 0;
 
@@ -439,21 +421,22 @@ const morningDialogues = [
 
 ];
 
+
 function startMorningScene() {
 
-  document
-    .getElementById("prologue")
-    .classList.add("hidden");
-
-  document
-    .getElementById("morningScene")
-    .classList.remove("hidden");
+  document.getElementById("prologue").classList.add("hidden");
+  document.getElementById("morningScene").classList.remove("hidden");
 
   morningIndex = 0;
+
+  /* 둘 다 처음부터 등장 */
+  document.getElementById("morningJiwoo").style.display = "block";
+  document.getElementById("morningYoungjun").style.display = "block";
 
   updateMorningScene();
 
 }
+
 
 function nextMorningScene() {
 
@@ -465,7 +448,12 @@ function nextMorningScene() {
 
   }
 
-  function updateMorningScene() {
+  updateMorningScene();
+
+}
+
+
+function updateMorningScene() {
 
   const name =
     morningDialogues[morningIndex][0];
@@ -475,18 +463,6 @@ function nextMorningScene() {
 
   document.getElementById("morningName").innerText = name;
   document.getElementById("morningText").innerText = text;
-
-    if (name === "영준") {
-
-  document
-    .getElementById("morningYoungjun")
-    .style.display = "block";
-
-} else {
-
-  document
-    .getElementById("morningYoungjun")
-    .style.display = "none";
 
 }
   
