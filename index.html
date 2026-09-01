@@ -448,23 +448,17 @@ function nextMorningScene() {
 
   updateMorningScene();
 }
-
+  
   function updateMorningScene() {
 
-  const name =
-    morningDialogues[morningIndex][0];
-
-  const text =
-    morningDialogues[morningIndex][1];
+  const name = morningDialogues[morningIndex][0];
+  const text = morningDialogues[morningIndex][1];
 
   document.getElementById("morningName").innerText = name;
   document.getElementById("morningText").innerText = text;
 
-  const jiwoo =
-    document.getElementById("morningJiwoo");
-
-  const youngjun =
-    document.getElementById("morningYoungjun");
+  const jiwoo = document.getElementById("morningJiwoo");
+  const youngjun = document.getElementById("morningYoungjun");
 
   if (name === "지우") {
 
