@@ -467,6 +467,7 @@ function nextMorningScene() {
   updateMorningScene();
 
 }
+
     function updateMorningScene() {
 
   const name = morningDialogues[morningIndex][0];
@@ -481,6 +482,8 @@ function nextMorningScene() {
   morningName.innerText = name;
   morningText.innerText = text;
 
+
+  // 지우만
   if (name === "지우") {
 
     jiwoo.style.display = "block";
@@ -488,7 +491,10 @@ function nextMorningScene() {
 
     jiwoo.src = "images/jiwoo-normal.PNG";
 
-  } 
+  }
+
+
+  // 영준만
   else if (name === "영준") {
 
     jiwoo.style.display = "none";
@@ -496,32 +502,38 @@ function nextMorningScene() {
 
     youngjun.src = "images/youngjun-normal.png";
 
-  } 
+  }
+
+
+  // ★ 둘이 동시에 말하는 장면
   else if (name === "둘이 함께") {
 
-    // ★ 둘 다 표시
+    // 두 사람 모두 표시
     jiwoo.style.display = "block";
     youngjun.style.display = "block";
 
-    // ★ 당황한 이미지
+    // 당황한 표정
     jiwoo.src = "images/jiwoo- embarrassed.png";
     youngjun.src = "images/youngjun-embarrassed.png";
 
-    // ★ 위치
+    // 좌우로 확실하게 배치
     jiwoo.style.left = "30%";
     youngjun.style.left = "70%";
 
-    // ★ 둘 다 가장 위에 표시
+    // 둘 다 위에 표시
     jiwoo.style.zIndex = "4";
     youngjun.style.zIndex = "4";
+  }
 
-  } 
+
+  // 나레이션
   else if (name === "나레이션") {
 
     jiwoo.style.display = "none";
     youngjun.style.display = "none";
 
   }
+
 }
 
 </script>
