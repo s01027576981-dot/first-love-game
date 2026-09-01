@@ -154,13 +154,13 @@ button {
   z-index: 2;
 }
 
-#morningJiwoo {
-  left: 35%;
-  z-index: 2;
+  #morningJiwoo {
+  left: 30%;
+  z-index: 3;
 }
 
 #morningYoungjun {
-  left: 65%;
+  left: 70%;
   z-index: 3;
 }
   
@@ -472,58 +472,58 @@ function nextMorningScene() {
   const name = morningDialogues[morningIndex][0];
   const text = morningDialogues[morningIndex][1];
 
-  document.getElementById("morningName").innerText = name;
-  document.getElementById("morningText").innerText = text;
+  const morningName = document.getElementById("morningName");
+  const morningText = document.getElementById("morningText");
 
   const jiwoo = document.getElementById("morningJiwoo");
   const youngjun = document.getElementById("morningYoungjun");
 
-  // 지우만 말할 때
+  morningName.innerText = name;
+  morningText.innerText = text;
+
   if (name === "지우") {
 
     jiwoo.style.display = "block";
     youngjun.style.display = "none";
 
     jiwoo.src = "images/jiwoo-normal.PNG";
-  }
 
-  // 영준만 말할 때
+  } 
   else if (name === "영준") {
 
     jiwoo.style.display = "none";
     youngjun.style.display = "block";
 
     youngjun.src = "images/youngjun-normal.png";
-  }
 
-  // ★ 둘이 동시에 말할 때
+  } 
   else if (name === "둘이 함께") {
 
-    // 두 사람 모두 화면에 표시
+    // ★ 둘 다 표시
     jiwoo.style.display = "block";
     youngjun.style.display = "block";
 
-    // 당황한 표정으로 변경
+    // ★ 당황한 이미지
     jiwoo.src = "images/Jiwoo- embarrassed.png";
     youngjun.src = "images/youngjun-embarrassed.png";
 
-    // 위치를 확실하게 지정
-    jiwoo.style.left = "35%";
-    youngjun.style.left = "65%";
+    // ★ 위치
+    jiwoo.style.left = "30%";
+    youngjun.style.left = "70%";
 
-    // 둘 다 앞으로 표시
-    jiwoo.style.zIndex = "3";
-    youngjun.style.zIndex = "3";
-  }
+    // ★ 둘 다 가장 위에 표시
+    jiwoo.style.zIndex = "4";
+    youngjun.style.zIndex = "4";
 
-  // 나레이션
+  } 
   else if (name === "나레이션") {
 
     jiwoo.style.display = "none";
     youngjun.style.display = "none";
+
   }
 }
-    
+
 </script>
 
 </body>
