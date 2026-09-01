@@ -338,15 +338,14 @@ button {
   src="images/school-special-1.PNG"
   alt="명장면 1"
   style="
-    display:block;
-    position:absolute;
+  display:none;
+  position:absolute;
     inset:0;
     width:100%;
     height:100%;
     object-fit:contain;
     z-index:100;
   "
->
 >
 <!-- 학교 대화창 -->
 <div
@@ -685,23 +684,22 @@ function nextSchoolScene() {
      다시 교실로 돌아오고
      영준 질문 + 선택지
   */
-  if (schoolIndex === 7) {
-    specialImage.style.display = "none";
-    background.style.display = "block";
-    jiwoo.style.display = "none";
-    youngjun.style.display = "block";
-    dialogueBox.style.display = "block";
-    document
-      .getElementById("schoolName")
-      .innerText = "영준";
-    document
-      .getElementById("schoolText")
-      .innerText =
-      "너 왜 아까 내가 너 기다린다고 했을 때 왜 이렇게 좋아했냐? 나 좋아하는 것 같이?";
-    nextButton.style.display = "none";
-    showSchoolChoices();
-    return;
-  }
+ if (schoolIndex === 7) {
+  specialImage.style.display = "none";
+  background.style.display = "block";
+  jiwoo.style.display = "none";
+  youngjun.style.display = "block";
+  dialogueBox.style.display = "block";
+
+  document.getElementById("schoolName").innerText = "영준";
+
+  document.getElementById("schoolText").innerText =
+    "너 왜 아까 내가 너 기다린다고 했을 때 왜 이렇게 좋아했냐? 나 좋아하는 것 같이?";
+
+  nextButton.style.display = "none";
+  showSchoolChoices();
+  return;
+}
 }
 /* =========================
    선택지
