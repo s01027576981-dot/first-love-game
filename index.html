@@ -1204,8 +1204,7 @@ function showSchoolChoices() {
   `;
 }
 
-
-/* =========================
+   /* =========================
    선택 결과
 ========================= */
 
@@ -1213,29 +1212,49 @@ function chooseSchool(choice) {
 
   schoolChoice = choice;
 
-  const jiwoo = document.getElementById("schoolJiwoo");
-  const youngjun = document.getElementById("schoolYoungjun");
+  const jiwoo =
+    document.getElementById("schoolJiwoo");
 
-  document.getElementById("schoolChoices").innerHTML = "";
+  const youngjun =
+    document.getElementById("schoolYoungjun");
 
-  document.getElementById("schoolNext").style.display = "block";
+  const schoolChoices =
+    document.getElementById("schoolChoices");
+
+  const schoolNext =
+    document.getElementById("schoolNext");
+
+  const schoolName =
+    document.getElementById("schoolName");
+
+  const schoolText =
+    document.getElementById("schoolText");
+
+
+  schoolChoices.innerHTML = "";
+
+  schoolNext.style.display = "block";
 
   jiwoo.style.display = "block";
   youngjun.style.display = "none";
 
-  document.getElementById("schoolName").innerText = "지우";
+  schoolName.innerText = "지우";
+
 
   if (choice === 1) {
 
-    document.getElementById("schoolText").innerText =
+    schoolText.innerText =
       "뭔 소리야, 나 너 안 좋아하거든?";
 
   } else {
 
-    document.getElementById("schoolText").innerText =
+    schoolText.innerText =
       "왜? 내가 너 좋아하길 바라는 거야?";
+
   }
+
 }
+
 
 /* ==================================================
    선택 결과 다음 장면
@@ -1245,18 +1264,12 @@ document
   .getElementById("schoolNext")
   .addEventListener("click", function() {
 
-    /*
-      선택 결과 이후에는
-      아직 다음 스토리를 만들지 않았으므로
-      버튼을 눌러도 현재 선택 결과를 유지
-    */
-
     if (schoolChoice !== 0) {
 
-      schoolName =
+      const schoolName =
         document.getElementById("schoolName");
 
-      schoolText =
+      const schoolText =
         document.getElementById("schoolText");
 
       schoolName.innerText = "영준";
