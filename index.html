@@ -587,15 +587,15 @@ function startSchoolScene() {
   document.getElementById("schoolNext").style.display = "block";
 }
 
+    function nextSchoolScene() {
 
-function nextSchoolScene() {
-
-  // 교실 장면 → 명장면
+  // 교실 → 명장면 1
   if (schoolIndex === 0) {
 
     schoolIndex = 1;
 
     document.getElementById("schoolBackground").style.display = "none";
+
     document.getElementById("schoolSpecialImage").style.display = "block";
 
     document.getElementById("schoolName").innerText = "";
@@ -606,12 +606,13 @@ function nextSchoolScene() {
   }
 
 
-  // 명장면 → 영준의 질문
+  // 명장면 → 영준 질문
   if (schoolIndex === 1) {
 
     schoolIndex = 2;
 
     document.getElementById("schoolName").innerText = "영준";
+
     document.getElementById("schoolText").innerText =
       "너 왜 아까 내가 너 기다린다고 했을 때 왜 이렇게 좋아했냐? 나 좋아하는 것 같이?";
 
@@ -621,74 +622,9 @@ function nextSchoolScene() {
 
     return;
   }
+
 }
 
-
-function showSchoolChoices() {
-
-  document.getElementById("schoolChoices").innerHTML = `
-
-    <button
-      onclick="chooseSchool(1)"
-      style="display:block; width:100%; margin:10px 0; padding:14px; border-radius:15px; background:white;"
-    >
-      뭔 소리야, 나 너 안 좋아하거든?
-    </button>
-
-    <button
-      onclick="chooseSchool(2)"
-      style="display:block; width:100%; margin:10px 0; padding:14px; border-radius:15px; background:white;"
-    >
-      왜? 내가 너 좋아하길 바라는 거야?
-    </button>
-
-  `;
-}
-
-
-function chooseSchool(choice) {
-
-  schoolChoice = choice;
-
-  document.getElementById("schoolChoices").innerHTML = "";
-  document.getElementById("schoolNext").style.display = "block";
-
-  document.getElementById("schoolName").innerText = "지우";
-
-  if (choice === 1) {
-
-    document.getElementById("schoolText").innerText =
-      "뭔 소리야, 나 너 안 좋아하거든?";
-
-  }
-
-  else if (choice === 2) {
-
-    document.getElementById("schoolText").innerText =
-      "왜? 내가 너 좋아하길 바라는 거야?";
-
-  }
-}
-
-
-function nextSchoolDialogue() {
-
-  if (schoolChoice === 1) {
-
-    document.getElementById("schoolName").innerText = "영준";
-    document.getElementById("schoolText").innerText =
-      "허, 나도 니 안 좋아하거든요? 삐죽이 아가씨?";
-
-  }
-
-  else if (schoolChoice === 2) {
-
-    document.getElementById("schoolName").innerText = "영준";
-    document.getElementById("schoolText").innerText =
-      "아.. 아니 그냥.. 니가 너무 좋아하길래..";
-
-  }
-}
 
 </script>
 
