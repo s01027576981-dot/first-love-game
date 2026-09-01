@@ -1139,19 +1139,23 @@ function nextSchoolScene() {
 
   /* ⑥ 명장면 */
 
-  if (schoolIndex === 6) {
+if (schoolIndex === 6) {
 
-    background.style.display = "none";
+  background.style.display = "none";
 
-    jiwoo.style.display = "none";
-    youngjun.style.display = "none";
+  jiwoo.style.display = "none";
+  youngjun.style.display = "none";
 
-    dialogueBox.style.display = "none";
+  dialogueBox.style.display = "none";
 
-    specialImage.style.display = "block";
+  specialImage.style.display = "block";
 
-    return;
-  }
+  document
+    .getElementById("specialNextButton")
+    .style.display = "block";
+
+  return;
+}
 
 
   /* ⑦ 명장면 다음 */
@@ -1255,35 +1259,48 @@ function chooseSchool(choice) {
 
 }
 
-
-/* ==================================================
-   선택 결과 다음 장면
+   /* ==================================================
+   학교 ▶ 버튼
 ================================================== */
 
 document
   .getElementById("schoolNext")
   .addEventListener("click", function() {
 
+    /* 선택지를 고른 후 ▶를 누른 경우 */
+
     if (schoolChoice !== 0) {
 
-      const schoolName =
-        document.getElementById("schoolName");
+      document.getElementById("schoolName").innerText = "영준";
 
-      const schoolText =
-        document.getElementById("schoolText");
-
-      schoolName.innerText = "영준";
-
-      schoolText.innerText =
+      document.getElementById("schoolText").innerText =
         "ㅋㅋㅋ 그래?";
 
-      document
-        .getElementById("schoolNext")
-        .style.display = "none";
+      document.getElementById("schoolNext").style.display = "none";
 
       schoolChoice = 0;
 
+      return;
     }
+
+    /* 선택 전에는 다음 학교 장면으로 */
+
+    nextSchoolScene();
+
+  });
+
+
+/* ==================================================
+   명장면 ▶ 버튼
+================================================== */
+
+document
+  .getElementById("specialNextButton")
+  .addEventListener("click", function() {
+
+    schoolIndex = 6;
+
+    nextSchoolScene();
 
   });
 
