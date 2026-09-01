@@ -498,17 +498,16 @@ function startMorningScene() {
 
     function nextMorningScene() {
 
-  morningIndex++;
-
-  if (morningIndex >= morningDialogues.length) {
+  if (morningIndex === morningDialogues.length - 1) {
     startSchoolScene();
     return;
   }
 
+  morningIndex++;
+
   updateMorningScene();
 
 }
-
 
     function updateMorningScene() {
 
