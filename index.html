@@ -310,7 +310,8 @@ button {
   </div>
 
 </div>
-<script>
+
+  <script>
 
 let dialogueIndex = 0;
 
@@ -325,12 +326,14 @@ const dialogues = [
   "영준이만 보면 이상하게 가슴이 두근거리기 시작했어."
 ];
 
+
 function startGame() {
 
   document.getElementById("startScreen").classList.add("hidden");
   document.getElementById("jiwooProfile").classList.remove("hidden");
 
 }
+
 
 function showYoungjunProfile() {
 
@@ -339,17 +342,19 @@ function showYoungjunProfile() {
 
 }
 
+
 function startPrologue() {
 
   document.getElementById("youngjunProfile").classList.add("hidden");
   document.getElementById("prologue").classList.remove("hidden");
 
   dialogueIndex = 0;
-  document.getElementById("dialogueNext").style.display = "inline-block";
+  document.getElementById("dialogueNext").style.display = "block";
 
   updateDialogue();
 
 }
+
 
 function nextDialogue() {
 
@@ -371,6 +376,7 @@ function nextDialogue() {
 
 }
 
+
 function updateDialogue() {
 
   document.getElementById("dialogueText").innerText =
@@ -386,11 +392,8 @@ function updateDialogue() {
 }
 
 
-/* =========================
-   등굣길 장면
-========================= */
-
 let morningIndex = 0;
+
 
 const morningDialogues = [
 
@@ -416,76 +419,68 @@ const morningDialogues = [
 
   ["지우", "아 뭐야.. 괜히 좋다 말았네.."],
 
-  ["영준", "ㅋㅋ 빨리 학교나 가자."],
-
   ["지우", "그래 그래~"],
 
   ["지우", "……잠깐만."],
 
   ["영준", "왜?"],
 
-  ["지우", "우리 지금 몇 시야?"],
+  ["지우", "지금 몇 시야?"],
 
   ["영준", "응? 갑자기 시간은 왜?"],
 
   ["지우", "……헐."],
 
-["영준", "뭐야? 왜 그래?"],
+  ["영준", "뭐야? 왜 그래?"],
 
-["지우", "영준아…… 우리 지각이야!!"],
+  ["지우", "영준아…… 우리 지각이야!!"],
 
-["영준", "뭐?!"],
+  ["영준", "뭐?!"],
 
-["지우", "으악!! 지각이다!!"],
+  ["지우", "으악!! 지각이다!!"],
 
-["영준", "으악!! 지각이다!!"],
+  ["영준", "으악!! 지각이다!!"],
 
-["나레이션", "우리는 그렇게 지각인 걸 알고 죽어라 달렸다."]
+  ["나레이션", "우리는 그렇게 지각인 걸 알고 죽어라 달렸다."]
 
 ];
-  
+
+
 function startMorningScene() {
 
-  document
-    .getElementById("prologue")
-    .classList.add("hidden");
-
-  document
-    .getElementById("morningScene")
-    .classList.remove("hidden");
+  document.getElementById("prologue").classList.add("hidden");
+  document.getElementById("morningScene").classList.remove("hidden");
 
   morningIndex = 0;
 
   updateMorningScene();
+
 }
 
-  function nextMorningScene() {
+
+function nextMorningScene() {
 
   morningIndex++;
 
   if (morningIndex >= morningDialogues.length) {
     return;
   }
-    
+
   updateMorningScene();
-  }
+
+}
+
 
 function updateMorningScene() {
 
-  const name =
-    morningDialogues[morningIndex][0];
-
-  const text =
-    morningDialogues[morningIndex][1];
+  const name = morningDialogues[morningIndex][0];
+  const text = morningDialogues[morningIndex][1];
 
   document.getElementById("morningName").innerText = name;
   document.getElementById("morningText").innerText = text;
 
-  const jiwoo =
-    document.getElementById("morningJiwoo");
-
-  const youngjun =
-    document.getElementById("morningYoungjun");
+  const jiwoo = document.getElementById("morningJiwoo");
+  const youngjun = document.getElementById("morningYoungjun");
 
 
   if (name === "지우") {
@@ -493,12 +488,18 @@ function updateMorningScene() {
     jiwoo.style.display = "block";
     youngjun.style.display = "none";
 
-  } else if (name === "영준") {
+  }
+
+
+  else if (name === "영준") {
 
     jiwoo.style.display = "none";
     youngjun.style.display = "block";
 
-  } else if (name === "나레이션") {
+  }
+
+
+  else if (name === "나레이션") {
 
     jiwoo.style.display = "none";
     youngjun.style.display = "none";
