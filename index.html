@@ -448,7 +448,7 @@ function nextMorningScene() {
 
   updateMorningScene();
 }
-  
+
   function updateMorningScene() {
 
   const name = morningDialogues[morningIndex][0];
@@ -457,22 +457,20 @@ function nextMorningScene() {
   document.getElementById("morningName").innerText = name;
   document.getElementById("morningText").innerText = text;
 
-  const jiwoo = document.getElementById("morningJiwoo");
-  const youngjun = document.getElementById("morningYoungjun");
+  if (name === "영준") {
 
-  if (name === "지우") {
-
-    jiwoo.style.display = "block";
-    youngjun.style.display = "none";
+    document.getElementById("morningYoungjun").style.display = "block";
+    document.getElementById("morningJiwoo").style.display = "none";
 
   } else {
 
-    jiwoo.style.display = "none";
-    youngjun.style.display = "block";
+    document.getElementById("morningYoungjun").style.display = "none";
+    document.getElementById("morningJiwoo").style.display = "block";
 
   }
-}
 
+}
+  
 </script>
 
 </body>
