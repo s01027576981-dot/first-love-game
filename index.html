@@ -603,6 +603,32 @@ button {
     "
   >
 
+  <!-- 체육시간 지우 -->
+
+  <img
+    id="peJiwoo"
+    class="character"
+    src="images/jiwoo-normal.PNG"
+    alt="지우"
+    style="
+      left:30%;
+      display:block;
+    "
+  >
+
+  <!-- 체육시간 영준 -->
+
+  <img
+    id="peYoungjun"
+    class="character"
+    src="images/youngjun-normal.png"
+    alt="영준"
+    style="
+      left:70%;
+      display:none;
+    "
+  >
+
   <img
     id="dodgeballImage"
     src="images/school-special-2.PNG"
@@ -1401,6 +1427,12 @@ const peNextButton =
 const dodgeballImage =
   document.getElementById("dodgeballImage");
 
+  const peJiwoo =
+  document.getElementById("peJiwoo");
+
+const peYoungjun =
+  document.getElementById("peYoungjun");
+
 
 let peIndex = 0;
 
@@ -1452,12 +1484,10 @@ function startPEScene() {
   showPEScene();
 }
 
-
 function showPEScene() {
 
   const scene =
     peScenes[peIndex];
-
 
   peSpeaker.textContent =
     scene[0];
@@ -1466,7 +1496,31 @@ function showPEScene() {
     scene[1];
 
 
-  /* 영준이가 지우 대신 공을 맞는 장면 */
+  // 캐릭터 표시
+
+  if (scene[0] === "지우") {
+
+    peJiwoo.style.display = "block";
+    peYoungjun.style.display = "none";
+
+  }
+
+  else if (scene[0] === "영준") {
+
+    peJiwoo.style.display = "none";
+    peYoungjun.style.display = "block";
+
+  }
+
+  else {
+
+    peJiwoo.style.display = "none";
+    peYoungjun.style.display = "none";
+
+  }
+
+
+  // 영준이가 지우 대신 공을 맞는 장면
 
   if (
     peIndex >= 4 &&
@@ -1486,37 +1540,6 @@ function showPEScene() {
   }
 
 }
-
-
-peNextButton
-  .addEventListener("click", function() {
-
-    peIndex++;
-
-
-    if (
-      peIndex >=
-      peScenes.length
-    ) {
-
-      peSpeaker.textContent =
-        "지우";
-
-      peText.textContent =
-        "……오늘 있었던 일이 계속 생각나..";
-
-      peNextButton.textContent =
-        "다음 ▶";
-
-      return;
-
-    }
-
-
-    showPEScene();
-
-  });
-
 
 </script>
 
