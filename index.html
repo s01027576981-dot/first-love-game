@@ -155,14 +155,16 @@ button {
 
 #dialogueText,
 #morningText,
-#schoolText {
+#schoolText,
+#peText {
   font-size: 18px;
   line-height: 1.6;
 }
 
 #dialogueNext,
 #morningNext,
-#schoolNext {
+#schoolNext,
+#peNextButton {
   margin-top: 10px;
   background: #ff8fbd;
   color: white;
@@ -526,16 +528,11 @@ button {
 
 <div id="schoolScene" class="screen hidden">
 
-  <!-- 교실 배경 -->
-
   <img
     id="schoolBackground"
     src="images/school-classroom.JPG"
     alt="교실"
   >
-
-
-  <!-- 지우 -->
 
   <img
     id="schoolJiwoo"
@@ -545,9 +542,6 @@ button {
     style="display:none;"
   >
 
-
-  <!-- 영준 -->
-
   <img
     id="schoolYoungjun"
     class="character"
@@ -556,24 +550,15 @@ button {
     style="display:none;"
   >
 
-
-  <!-- 명장면 -->
-
   <img
     id="schoolSpecialImage"
     src="images/school-special-1.PNG"
     alt="명장면"
   >
 
-
-  <!-- 명장면 ▶ -->
-
   <button id="specialNextButton">
     ▶
   </button>
-
-
-  <!-- 학교 대화창 -->
 
   <div
     id="schoolDialogueBox"
@@ -590,6 +575,62 @@ button {
     <div id="schoolChoices"></div>
 
     <button id="schoolNext">
+      ▶
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ==================================================
+     체육시간 장면
+================================================== -->
+
+<div id="peScreen" class="screen" style="display:none;">
+
+  <img
+    id="peBackground"
+    src="images/school-gym.JPG"
+    alt="체육시간"
+    style="
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:0;
+    "
+  >
+
+  <img
+    id="dodgeballImage"
+    src="images/school-special-2.PNG"
+    alt="영준이가 지우 대신 공을 맞는 장면"
+    style="
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      z-index:100;
+      display:none;
+    "
+  >
+
+  <div
+    class="dialogue-box"
+    style="z-index:200;"
+  >
+
+    <div
+      id="peSpeaker"
+      class="dialogue-name"
+    ></div>
+
+    <div id="peText"></div>
+
+    <button id="peNextButton">
       ▶
     </button>
 
@@ -659,7 +700,6 @@ document
 ================================================== */
 
 let dialogueIndex = 0;
-
 
 const dialogues = [
 
@@ -770,7 +810,6 @@ function updateDialogue() {
 ================================================== */
 
 let morningIndex = 0;
-
 
 const morningDialogues = [
 
@@ -894,7 +933,6 @@ function updateMorningScene() {
 
   }
 
-
   else if (name === "영준") {
 
     jiwoo.style.display = "none";
@@ -904,7 +942,6 @@ function updateMorningScene() {
       "images/youngjun-normal.png";
 
   }
-
 
   else if (name === "둘이 함께") {
 
@@ -921,7 +958,6 @@ function updateMorningScene() {
     youngjun.style.left = "70%";
 
   }
-
 
   else {
 
@@ -990,6 +1026,7 @@ function startSchoolScene() {
 
   nextButton.style.display = "block";
 
+
   document
     .getElementById("schoolChoices")
     .innerHTML = "";
@@ -1043,8 +1080,6 @@ function nextSchoolScene() {
   schoolIndex++;
 
 
-  /* ① 영준 */
-
   if (schoolIndex === 1) {
 
     jiwoo.style.display = "none";
@@ -1058,8 +1093,6 @@ function nextSchoolScene() {
     return;
   }
 
-
-  /* ② 지우 */
 
   if (schoolIndex === 2) {
 
@@ -1075,8 +1108,6 @@ function nextSchoolScene() {
   }
 
 
-  /* ③ 영준 */
-
   if (schoolIndex === 3) {
 
     jiwoo.style.display = "none";
@@ -1090,8 +1121,6 @@ function nextSchoolScene() {
     return;
   }
 
-
-  /* ④ 지우 */
 
   if (schoolIndex === 4) {
 
@@ -1107,8 +1136,6 @@ function nextSchoolScene() {
   }
 
 
-  /* ⑤ 영준 */
-
   if (schoolIndex === 5) {
 
     jiwoo.style.display = "none";
@@ -1122,8 +1149,6 @@ function nextSchoolScene() {
     return;
   }
 
-
-  /* ⑥ 명장면 */
 
   if (schoolIndex === 6) {
 
@@ -1141,8 +1166,6 @@ function nextSchoolScene() {
     return;
   }
 
-
-  /* ⑦ 명장면 다음 */
 
   if (schoolIndex === 7) {
 
@@ -1285,8 +1308,6 @@ document
       document.getElementById("schoolChoices");
 
 
-    /* 선택지를 고른 뒤 */
-
     if (schoolChoice !== 0 && !schoolReplyShown) {
 
       jiwoo.style.display = "none";
@@ -1319,8 +1340,6 @@ document
     }
 
 
-    /* 영준의 대답까지 본 뒤 */
-
     if (schoolReplyShown) {
 
       schoolChoice = 0;
@@ -1337,13 +1356,11 @@ document
       youngjun.style.display = "none";
 
       startPEScene();
-      
+
       return;
 
     }
 
-
-    /* 평소 학교 대화 */
 
     nextSchoolScene();
 
@@ -1364,38 +1381,69 @@ document
 
   });
 
-  /* ==============================
-   체육시간 장면
-============================== */
 
-const peScreen = document.getElementById("peScreen");
-const peSpeaker = document.getElementById("peSpeaker");
-const peText = document.getElementById("peText");
-const peNextButton = document.getElementById("peNextButton");
-const dodgeballImage = document.getElementById("dodgeballImage");
+/* ==================================================
+   체육시간 장면
+================================================== */
+
+const peScreen =
+  document.getElementById("peScreen");
+
+const peSpeaker =
+  document.getElementById("peSpeaker");
+
+const peText =
+  document.getElementById("peText");
+
+const peNextButton =
+  document.getElementById("peNextButton");
+
+const dodgeballImage =
+  document.getElementById("dodgeballImage");
+
 
 let peIndex = 0;
 
+
 const peScenes = [
+
   ["지우", "체육시간이네..."],
+
   ["지우", "하..,오늘 운동장에서 피구를 하는 날이네.."],
+
   ["나래이션", "친구들과 게임을 하던 중……"],
+
   ["지우", "어……?"],
+
   ["영준", "……지우야!"],
+
   ["지우", "어?!"],
+
   ["지우", "영준아!!"],
+
   ["영준", "……괜찮아?"],
+
   ["지우", "왜…… 나 대신 맞은 거야?"],
+
   ["영준", "네가 맞는 것보단 내가 맞는 게 나으니까."],
+
   ["지우", "……고마워."],
+
   ["영준", "별거 아니야."]
+
 ];
+
 
 function startPEScene() {
 
-  document.querySelectorAll(".screen").forEach(screen => {
-    screen.style.display = "none";
-  });
+  document
+    .querySelectorAll(".screen")
+    .forEach(function(screen) {
+
+      screen.style.display = "none";
+
+    });
+
 
   peScreen.style.display = "block";
 
@@ -1404,43 +1452,76 @@ function startPEScene() {
   dodgeballImage.style.display = "none";
 
   showPEScene();
+
 }
+
 
 function showPEScene() {
 
-  const scene = peScenes[peIndex];
+  const scene =
+    peScenes[peIndex];
 
-  peSpeaker.textContent = scene[0];
-  peText.textContent = scene[1];
 
-  // 영준이가 지우 대신 공을 맞는 장면
-  if (peIndex >= 4 && peIndex <= 7) {
-    dodgeballImage.style.display = "block";
-  } else {
-    dodgeballImage.style.display = "none";
+  peSpeaker.textContent =
+    scene[0];
+
+  peText.textContent =
+    scene[1];
+
+
+  /* 영준이가 지우 대신 공을 맞는 장면 */
+
+  if (
+    peIndex >= 4 &&
+    peIndex <= 7
+  ) {
+
+    dodgeballImage.style.display =
+      "block";
+
   }
+
+  else {
+
+    dodgeballImage.style.display =
+      "none";
+
+  }
+
 }
 
-peNextButton.addEventListener("click", function() {
 
-  peIndex++;
+peNextButton
+  .addEventListener("click", function() {
 
-  if (peIndex >= peScenes.length) {
-
-    peSpeaker.textContent = "지우";
-    peText.textContent = "……오늘 있었던 일이 계속 생각.";
-
-    peNextButton.textContent = "다음 ▶";
-
-    return;
-  }
-
-  showPEScene();
-
-});
+    peIndex++;
 
 
-  
+    if (
+      peIndex >=
+      peScenes.length
+    ) {
+
+      peSpeaker.textContent =
+        "지우";
+
+      peText.textContent =
+        "……오늘 있었던 일이 계속 생각나..";
+
+      peNextButton.textContent =
+        "다음 ▶";
+
+      return;
+
+    }
+
+
+    showPEScene();
+
+  });
+
+
 </script>
+
 </body>
 </html>
