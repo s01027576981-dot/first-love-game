@@ -1541,6 +1541,24 @@ function showPEScene() {
 
 }
 
+  peNextButton.addEventListener("click", function() {
+
+  peIndex++;
+
+  if (peIndex >= peScenes.length) {
+
+    peSpeaker.textContent = "지우";
+    peText.textContent = "……오늘 있었던 일이 계속 생각나..";
+
+    peNextButton.textContent = "다음 ▶";
+
+    return;
+  }
+
+  showPEScene();
+
+});
+
 </script>
 
 </body>
