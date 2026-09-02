@@ -1433,26 +1433,23 @@ const peScenes = [
 
 ];
 
-
 function startPEScene() {
 
-  document
-    .querySelectorAll(".screen")
-    .forEach(function(screen) {
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.add("hidden");
+    screen.style.display = "none";
+  });
 
-      screen.style.display = "none";
-
-    });
-
-
+  peScreen.classList.remove("hidden");
   peScreen.style.display = "block";
 
   peIndex = 0;
 
   dodgeballImage.style.display = "none";
 
-  showPEScene();
+  peNextButton.textContent = "▶";
 
+  showPEScene();
 }
 
 
