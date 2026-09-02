@@ -1362,7 +1362,110 @@ document
 
   });
 
+  /* ==============================
+   체육시간 장면
+============================== */
+
+const peScreen = document.getElementById("peScreen");
+const peSpeaker = document.getElementById("peSpeaker");
+const peText = document.getElementById("peText");
+const peNextButton = document.getElementById("peNextButton");
+const dodgeballImage = document.getElementById("dodgeballImage");
+
+let peIndex = 0;
+
+const peScenes = [
+  ["지우", "체육시간이네..."],
+  ["지우", "하..,오늘 운동장에서 피구를 하는 날이네.."],
+  ["나래이션", "친구들과 게임을 하던 중……"],
+  ["지우", "어……?"],
+  ["영준", "……지우야!"],
+  ["지우", "어?!"],
+  ["지우", "영준아!!"],
+  ["영준", "……괜찮아?"],
+  ["지우", "왜…… 나 대신 맞은 거야?"],
+  ["영준", "네가 맞는 것보단 내가 맞는 게 나으니까."],
+  ["지우", "……고마워."],
+  ["영준", "별거 아니야."]
+];
+
+function startPEScene() {
+
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.style.display = "none";
+  });
+
+  peScreen.style.display = "block";
+
+  peIndex = 0;
+
+  dodgeballImage.style.display = "none";
+
+  showPEScene();
+}
+
+function showPEScene() {
+
+  const scene = peScenes[peIndex];
+
+  peSpeaker.textContent = scene[0];
+  peText.textContent = scene[1];
+
+  // 영준이가 지우 대신 공을 맞는 장면
+  if (peIndex >= 4 && peIndex <= 7) {
+    dodgeballImage.style.display = "block";
+  } else {
+    dodgeballImage.style.display = "none";
+  }
+}
+
+peNextButton.addEventListener("click", function() {
+
+  peIndex++;
+
+  if (peIndex >= peScenes.length) {
+
+    peSpeaker.textContent = "지우";
+    peText.textContent = "……오늘 있었던 일이 계속 생각.";
+
+    peNextButton.textContent = "다음 ▶";
+
+    return;
+  }
+
+  showPEScene();
+
+});
+
 </script>
+
+  <!-- 체육시간 장면 -->
+<div id="peScreen" class="screen" style="display:none;">
+
+  <img
+    id="dodgeballImage"
+    src="images/school-special-2.PNG"
+    style="
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:100;
+      display:none;
+    "
+  >
+
+  <div class="dialogue-box" style="z-index:200;">
+    <div id="peSpeaker"></div>
+    <div id="peText"></div>
+
+    <button id="peNextButton">
+      ▶
+    </button>
+  </div>
+
+</div>
 
 </body>
 </html>
