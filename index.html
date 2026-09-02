@@ -1259,29 +1259,55 @@ function chooseSchool(choice) {
 
 }
 
-   /* ==================================================
-   학교 ▶ 버튼
+
+
+
+/* ==================================================
+   명장면 ▶ 버튼
 ================================================== */
 
-document
-  .getElementById("schoolNext")
-  .addEventListener("click", function() {
+
+    const jiwoo =
+      document.getElementById("schoolJiwoo");
+
+    const youngjun =
+      document.getElementById("schoolYoungjun");
+
+    const schoolName =
+      document.getElementById("schoolName");
+
+    const schoolText =
+      document.getElementById("schoolText");
+
+    const schoolNext =
+      document.getElementById("schoolNext");
+
 
     /* 선택지를 고른 후 ▶를 누른 경우 */
 
     if (schoolChoice !== 0) {
 
-      document.getElementById("schoolName").innerText = "영준";
+      /* 지우 숨기기 */
+      jiwoo.style.display = "none";
 
-      document.getElementById("schoolText").innerText =
+      /* 영준 나타내기 */
+      youngjun.style.display = "block";
+
+      /* 영준 대사 */
+      schoolName.innerText = "영준";
+
+      schoolText.innerText =
         "ㅋㅋㅋ 그래?";
 
-      document.getElementById("schoolNext").style.display = "none";
+      /* ▶ 숨기기 */
+      schoolNext.style.display = "none";
 
+      /* 선택 초기화 */
       schoolChoice = 0;
 
       return;
     }
+
 
     /* 선택 전에는 다음 학교 장면으로 */
 
@@ -1289,21 +1315,64 @@ document
 
   });
 
-
 /* ==================================================
-   명장면 ▶ 버튼
+   학교 ▶ 버튼
 ================================================== */
 
 document
-  .getElementById("specialNextButton")
+  .getElementById("schoolNext")
   .addEventListener("click", function() {
 
-    schoolIndex = 6;
+    const jiwoo =
+      document.getElementById("schoolJiwoo");
+
+    const youngjun =
+      document.getElementById("schoolYoungjun");
+
+    const schoolName =
+      document.getElementById("schoolName");
+
+    const schoolText =
+      document.getElementById("schoolText");
+
+    const schoolNext =
+      document.getElementById("schoolNext");
+
+
+    /* 선택지를 고른 후 ▶를 누른 경우 */
+
+    if (schoolChoice !== 0) {
+
+      jiwoo.style.display = "none";
+      youngjun.style.display = "block";
+
+      schoolName.innerText = "영준";
+
+      if (schoolChoice === 1) {
+
+        schoolText.innerText =
+          "ㅋㅋㅋ 그래?";
+
+      } else if (schoolChoice === 2) {
+
+        schoolText.innerText =
+          "뭐야, 내가 너 좋아하길 바라는 것처럼 들리는데?";
+
+      }
+
+      schoolNext.style.display = "block";
+
+      schoolChoice = 0;
+
+      return;
+    }
+
+
+    /* 선택 전에는 다음 학교 장면으로 */
 
     nextSchoolScene();
 
   });
-
 
 </script>
 
