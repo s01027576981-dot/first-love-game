@@ -800,8 +800,373 @@ button {
 </div>
 
 
+<!-- ================================= -->
+<!-- ⭐ 도착지 고백 장면 -->
+<!-- ================================= -->
+
+<div id="confessionScreen" class="screen hidden">
+
+  <img
+    id="confessionBackground"
+    src="images/bus-stop.JPG"
+    alt="저녁 하교길"
+  >
+
+  <img
+    id="confessionJiwoo"
+    class="character"
+    src="images/jiwoo-normal.PNG"
+    alt="지우"
+    style="left:30%;"
+  >
+
+  <img
+    id="confessionYoungjun"
+    class="character"
+    src="images/youngjun-normal.png"
+    alt="영준"
+    style="left:70%;"
+  >
+
+  <div
+    id="confessionDialogueBox"
+    class="dialogue-box"
+  >
+
+    <div
+      id="confessionSpeaker"
+      class="dialogue-name"
+    ></div>
+
+    <div id="confessionText"></div>
+
+    <button id="confessionNext">
+      ▶
+    </button>
+
+  </div>
+
 </div>
 
+
+<!-- ================================= -->
+<!-- ⭐ 고백 선택지 -->
+<!-- ================================= -->
+
+<div id="confessionChoiceScreen" class="screen hidden">
+
+  <h2>지우의 대답</h2>
+
+  <button id="happyChoice">
+    좋아, 우리 사귀자
+  </button>
+
+  <button id="badChoice">
+    미안.. 난 아직 준비가 안 됐어
+  </button>
+
+</div>
+
+
+<!-- ================================= -->
+<!-- ⭐ 해피 엔딩 -->
+<!-- ================================= -->
+
+<div
+  id="happyEndingScene"
+  class="screen hidden"
+>
+
+  <div
+    style="
+      background:#ffb6d9;
+      min-height:100vh;
+      text-align:center;
+      padding-top:20px;
+      box-sizing:border-box;
+    "
+  >
+
+    <img
+      src="images/school-special-6.PNG"
+      alt="해피엔딩 명장면"
+      style="
+        width:100%;
+        max-height:70vh;
+        object-fit:contain;
+      "
+    >
+
+    <p>영준</p>
+
+    <p>사랑해.. 지우야.</p>
+
+    <p>지우</p>
+
+    <p>나도 사랑해, 영준아..</p>
+
+    <div
+      style="
+        font-size:38px;
+        font-weight:bold;
+        margin-top:30px;
+      "
+    >
+      HAPPY ENDING
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================================= -->
+<!-- ⭐ 베드 엔딩 -->
+<!-- ================================= -->
+
+<div
+  id="badEndingScreen"
+  class="screen hidden"
+>
+
+  <div
+    style="
+      background:#292929;
+      color:white;
+      min-height:100vh;
+      text-align:center;
+      padding-top:35vh;
+      box-sizing:border-box;
+    "
+  >
+
+    <p>영준</p>
+
+    <p>아.. 그래..?</p>
+
+    <p>
+      어쩔 수 없지..<br>
+      그래, 그냥 친구로 지내자..
+    </p>
+
+    <div
+      style="
+        font-size:40px;
+        font-weight:bold;
+        margin-top:50px;
+      "
+    >
+      BAD ENDING
+    </div>
+
+  </div>
+
+</div>
+
+
+</div>
+
+  <!-- ==================================================
+     고백 장면
+================================================== -->
+
+<div id="confessionScreen" class="screen hidden">
+
+  <img
+    src="images/bus-stop.JPG"
+    style="
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      position:absolute;
+      left:0;
+      top:0;
+    "
+  >
+
+  <img
+    id="confessionJiwoo"
+    class="character"
+    src="images/jiwoo-normal.PNG"
+    style="
+      left:30%;
+      display:none;
+    "
+  >
+
+  <img
+    id="confessionYoungjun"
+    class="character"
+    src="images/youngjun-normal.png"
+    style="
+      left:70%;
+      display:none;
+    "
+  >
+
+  <div
+    class="dialogue-box"
+    style="
+      position:absolute;
+      bottom:20px;
+      left:5%;
+      width:90%;
+    "
+  >
+
+    <div
+      id="confessionSpeaker"
+      class="dialogue-name"
+    ></div>
+
+    <div id="confessionText"></div>
+
+    <button id="confessionNext">
+      ▶
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- ==================================================
+     고백 선택지
+================================================== -->
+
+<div
+  id="confessionChoiceScreen"
+  class="screen hidden"
+  style="
+    text-align:center;
+    padding-top:25vh;
+  "
+>
+
+  <h2>지우의 대답</h2>
+
+  <button
+    id="happyChoice"
+    class="school-choice"
+  >
+    좋아, 우리 사귀자
+  </button>
+
+  <button
+    id="badChoice"
+    class="school-choice"
+  >
+    미안.. 난 아직 준비가 안 됐어
+  </button>
+
+</div>
+
+
+<!-- ==================================================
+     HAPPY ENDING
+================================================== -->
+
+<div
+  id="happyEndingScene"
+  class="screen hidden"
+  style="
+    background:#ffb6d9;
+    min-height:100vh;
+    text-align:center;
+    box-sizing:border-box;
+    padding:20px;
+  "
+>
+
+  <img
+    src="images/school-special-6.PNG"
+    style="
+      width:100%;
+      max-height:65vh;
+      object-fit:contain;
+    "
+  >
+
+  <div style="font-size:20px; line-height:1.8;">
+
+    <div>영준</div>
+
+    <div>
+      사랑해.. 지우야.
+    </div>
+
+    <div>지우</div>
+
+    <div>
+      나도 사랑해, 영준아..
+    </div>
+
+  </div>
+
+  <div
+    style="
+      font-size:40px;
+      font-weight:bold;
+      margin-top:20px;
+    "
+  >
+    HAPPY ENDING
+  </div>
+
+</div>
+
+
+<!-- ==================================================
+     BAD ENDING
+================================================== -->
+
+<div
+  id="badEndingScreen"
+  class="screen hidden"
+  style="
+    background:#292929;
+    color:white;
+    min-height:100vh;
+    text-align:center;
+    padding-top:30vh;
+    box-sizing:border-box;
+  "
+>
+
+  <div
+    style="
+      font-size:20px;
+      line-height:2;
+    "
+  >
+
+    <div>영준</div>
+
+    <div>
+      아.. 그래..?
+    </div>
+
+    <div>
+      어쩔 수 없지..
+    </div>
+
+    <div>
+      그래, 그냥 친구로 지내자..
+    </div>
+
+  </div>
+
+  <div
+    style="
+      font-size:40px;
+      font-weight:bold;
+      margin-top:50px;
+    "
+  >
+    BAD ENDING
+  </div>
+
+</div>
 
 <script>
 
@@ -2100,19 +2465,200 @@ afterSchoolSpecialNext.addEventListener(
 
     afterSchoolNext.onclick = function() {
 
-      afterSchoolSpeaker.textContent =
-        "나레이션";
+  startConfessionScene();
 
-      afterSchoolText.textContent =
-        "그날의 하교길은 평소와 조금 달랐다.";
-
-      afterSchoolNext.style.display =
-        "none";
-
-    };
+};
 
   }
 );
+
+  /* ==================================================
+   도착지 → 저녁 하교 → 영준 고백
+================================================== */
+
+let confessionIndex = 0;
+
+const confessionScenes = [
+
+  ["나레이션", "버스에서 내린 지우와 영준은 나란히 집으로 향했다."],
+
+  ["나레이션", "어느덧 저녁이 되고, 주변은 어둑어둑해졌다."],
+
+  ["지우", "오늘 하루가 정말 길었던 것 같아."],
+
+  ["영준", "……"],
+
+  ["지우", "응? 영준아, 왜 그래?"],
+
+  ["나레이션", "영준은 잠시 걸음을 멈췄다."],
+
+  ["나레이션", "영준의 볼이 붉어졌다."],
+
+  ["영준", "야, 최지우.."],
+
+  ["영준", "나.. 너 좋아해.."]
+
+];
+
+
+function startConfessionScene() {
+
+  hideAllScreens();
+
+  document
+    .getElementById("confessionScreen")
+    .classList.remove("hidden");
+
+  confessionIndex = 0;
+
+  document
+    .getElementById("confessionJiwoo")
+    .src =
+    "images/jiwoo-normal.PNG";
+
+  document
+    .getElementById("confessionYoungjun")
+    .src =
+    "images/youngjun-normal.png";
+
+  showConfessionScene();
+
+}
+
+
+function showConfessionScene() {
+
+  const scene =
+    confessionScenes[confessionIndex];
+
+  const speaker =
+    scene[0];
+
+  const text =
+    scene[1];
+
+
+  document
+    .getElementById("confessionSpeaker")
+    .innerText =
+    speaker;
+
+
+  document
+    .getElementById("confessionText")
+    .innerText =
+    text;
+
+
+  const jiwoo =
+    document.getElementById("confessionJiwoo");
+
+  const youngjun =
+    document.getElementById("confessionYoungjun");
+
+
+  jiwoo.style.display = "none";
+  youngjun.style.display = "none";
+
+
+  if (speaker === "지우") {
+
+    jiwoo.style.display = "block";
+
+  }
+
+  else if (speaker === "영준") {
+
+    youngjun.style.display = "block";
+
+  }
+
+
+  /* 영준이 고백하는 순간 설렘 표정 */
+
+  if (confessionIndex >= 7) {
+
+    youngjun.src =
+      "images/youngjun-embarrassed.png";
+
+    youngjun.style.display =
+      "block";
+
+  }
+
+}
+
+
+document
+  .getElementById("confessionNext")
+  .addEventListener(
+    "click",
+    function() {
+
+      if (
+        confessionIndex <
+        confessionScenes.length - 1
+      ) {
+
+        confessionIndex++;
+
+        showConfessionScene();
+
+        return;
+
+      }
+
+
+      /* 고백 후 선택지 화면 */
+
+      hideAllScreens();
+
+      document
+        .getElementById("confessionChoiceScreen")
+        .classList.remove("hidden");
+
+    }
+  );
+
+
+/* ==================================================
+   좋아, 우리 사귀자 → HAPPY ENDING
+================================================== */
+
+document
+  .getElementById("happyChoice")
+  .addEventListener(
+    "click",
+    function() {
+
+      hideAllScreens();
+
+      document
+        .getElementById("happyEndingScene")
+        .classList.remove("hidden");
+
+    }
+  );
+
+
+/* ==================================================
+   미안.. 난 아직 준비가 안 됐어 → BAD ENDING
+================================================== */
+
+document
+  .getElementById("badChoice")
+  .addEventListener(
+    "click",
+    function() {
+
+      hideAllScreens();
+
+      document
+        .getElementById("badEndingScreen")
+        .classList.remove("hidden");
+
+    }
+  );
 
 </script>
 
