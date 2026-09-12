@@ -1,267 +1,408 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
 <title>첫사랑 이루기</title>
 
+
 <style>
+
+/* ==================================================
+   기본
+================================================== */
 
 * {
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
   background: #ffd9e8;
   font-family: sans-serif;
 }
 
+
+/* ==================================================
+   게임 전체
+================================================== */
+
 #game {
+
   width: 100%;
+
   min-height: 100vh;
+
   display: flex;
+
   justify-content: center;
+
   align-items: center;
+
 }
 
+
+/* ==================================================
+   모든 화면
+================================================== */
+
 .screen {
+
   width: 100%;
-  max-width: 600px;
+
+  max-width: 430px;
+
   min-height: 100vh;
+
   background: #ffd9e8;
-  text-align: center;
-  padding: 20px;
+
   position: relative;
+
+  overflow: hidden;
+
+  text-align: center;
+
 }
+
 
 .hidden {
   display: none !important;
 }
 
+
 button {
+
   border: none;
+
   cursor: pointer;
+
   font-size: 18px;
+
 }
 
 
-/* =========================
+/* ==================================================
    시작 화면
-========================= */
+================================================== */
 
 #startScreen {
+
   padding: 0;
+
   display: flex;
+
   justify-content: center;
+
   align-items: center;
+
 }
+
 
 #startButton {
+
   width: 100%;
-  max-width: 600px;
+
   padding: 0;
-  margin: 0;
+
   background: none;
-  border: none;
+
 }
+
 
 .start-img {
+
   width: 100%;
-  max-width: 600px;
+
+  height: 100vh;
+
+  object-fit: cover;
+
   display: block;
-  border-radius: 12px;
+
 }
 
 
-/* =========================
+/* ==================================================
    프로필
-========================= */
+================================================== */
 
 .profile {
+
   background: white;
+
   border-radius: 20px;
+
   padding: 20px;
-  margin: 20px 0;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+  margin: 20px;
+
+  box-shadow:
+    0 4px 15px rgba(0,0,0,0.1);
+
 }
+
 
 .profile img {
+
   width: 180px;
+
   max-width: 70%;
+
   border-radius: 15px;
+
 }
+
 
 .profile h2 {
+
   margin: 12px 0;
+
 }
+
 
 .profile p {
+
   margin: 6px 0;
+
   line-height: 1.5;
+
 }
+
 
 .next-btn {
+
   background: #ff8fbd;
+
   color: white;
+
   padding: 12px 30px;
+
   border-radius: 30px;
+
   margin-top: 15px;
+
 }
 
 
-/* =========================
+/* ==================================================
    캐릭터
-========================= */
+================================================== */
 
 .character {
+
   position: absolute;
+
   bottom: 0;
+
   left: 50%;
+
   transform: translateX(-50%);
+
   height: 65vh;
+
   max-width: 90%;
+
   object-fit: contain;
+
   z-index: 3;
+
 }
 
 
-/* =========================
+/* ==================================================
    대화창
-========================= */
+================================================== */
 
 .dialogue-box {
+
   position: absolute;
+
   left: 5%;
+
   right: 5%;
+
   bottom: 20px;
 
   background: white;
+
   border-radius: 20px;
 
-  padding: 20px;
+  padding: 18px;
 
   z-index: 200;
 
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  box-shadow:
+    0 4px 15px rgba(0,0,0,0.15);
+
 }
 
+
 .dialogue-name {
+
   font-weight: bold;
+
   color: #ff6fa8;
+
   margin-bottom: 8px;
+
 }
+
 
 #dialogueText,
 #morningText,
 #schoolText,
 #peText,
-#afterSchoolText {
-  font-size: 18px;
+#afterSchoolText,
+#confessionText {
+
+  font-size: 17px;
+
   line-height: 1.6;
+
 }
+
 
 #dialogueNext,
 #morningNext,
 #schoolNext,
 #peNextButton,
-#afterSchoolNext {
+#afterSchoolNext,
+#confessionNext {
+
   margin-top: 10px;
+
   background: #ff8fbd;
+
   color: white;
+
   padding: 8px 22px;
+
   border-radius: 20px;
+
 }
 
 
-/* =========================
+/* ==================================================
    프롤로그
-========================= */
+================================================== */
 
 #prologue {
+
   overflow: hidden;
+
 }
 
 
-/* =========================
+/* ==================================================
    등굣길
-========================= */
+================================================== */
 
 #morningScene {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
+
   padding: 0;
+
 }
+
 
 .morning-background {
+
   position: absolute;
+
   inset: 0;
 
   width: 100%;
+
   height: 100%;
 
   object-fit: cover;
 
   z-index: 0;
+
 }
+
 
 #morningJiwoo {
+
   left: 30%;
-  z-index: 3;
+
 }
+
 
 #morningYoungjun {
+
   left: 70%;
-  z-index: 3;
+
 }
 
 
-/* =========================
-   학교 교실
-========================= */
+/* ==================================================
+   학교
+================================================== */
 
 #schoolScene {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
+
   padding: 0;
+
 }
 
+
 #schoolBackground {
+
   position: absolute;
+
   inset: 0;
 
   width: 100%;
+
   height: 100%;
 
   object-fit: cover;
 
   z-index: 0;
+
 }
+
 
 #schoolJiwoo {
+
   left: 30%;
-  z-index: 3;
+
 }
+
 
 #schoolYoungjun {
+
   left: 70%;
-  z-index: 3;
+
 }
 
 
-/* =========================
-   명장면 이미지
-========================= */
+/* ==================================================
+   학교 명장면
+================================================== */
 
 #schoolSpecialImage {
+
   position: absolute;
 
   inset: 0;
 
   width: 100%;
+
   height: 100%;
 
   object-fit: contain;
@@ -270,18 +411,15 @@ button {
 
   display: none;
 
-  pointer-events: none;
 }
 
 
-/* =========================
-   명장면 ▶ 버튼
-========================= */
-
 #specialNextButton {
+
   position: absolute;
 
   bottom: 30px;
+
   left: 50%;
 
   transform: translateX(-50%);
@@ -299,14 +437,16 @@ button {
   font-size: 20px;
 
   display: none;
+
 }
 
 
-/* =========================
+/* ==================================================
    선택지
-========================= */
+================================================== */
 
 .school-choice {
+
   display: block;
 
   width: 100%;
@@ -322,47 +462,67 @@ button {
   border: 2px solid #ffd1e2;
 
   color: #333;
+
 }
+
 
 .school-choice:active {
+
   background: #ffe8f1;
+
 }
 
 
-/* =========================
-   하교 장면
-========================= */
+/* ==================================================
+   체육시간
+================================================== */
 
-#afterSchoolScreen {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
+#peScreen {
+
   padding: 0;
+
 }
 
-#afterSchoolBackground {
+
+#peBackground {
+
   position: absolute;
+
   inset: 0;
 
   width: 100%;
+
   height: 100%;
 
   object-fit: cover;
 
   z-index: 0;
+
 }
 
 
-/* =========================
-   하교 명장면
-========================= */
+#peJiwoo {
 
-#afterSchoolSpecialImage {
+  left: 30%;
+
+}
+
+
+#peYoungjun {
+
+  left: 70%;
+
+}
+
+
+#dodgeballImage {
+
   position: absolute;
 
   inset: 0;
 
   width: 100%;
+
   height: 100%;
 
   object-fit: contain;
@@ -371,13 +531,66 @@ button {
 
   display: none;
 
-  pointer-events: none;
 }
 
+
+/* ==================================================
+   하교
+================================================== */
+
+#afterSchoolScreen {
+
+  padding: 0;
+
+}
+
+
+#afterSchoolBackground {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: 0;
+
+}
+
+
+/* ==================================================
+   하교 명장면
+================================================== */
+
+#afterSchoolSpecialImage {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: contain;
+
+  z-index: 100;
+
+  display: none;
+
+}
+
+
 #afterSchoolSpecialNext {
+
   position: absolute;
 
   bottom: 30px;
+
   left: 50%;
 
   transform: translateX(-50%);
@@ -395,24 +608,230 @@ button {
   font-size: 20px;
 
   display: none;
+
+}
+
+
+/* ==================================================
+   🌆 고백 장면
+================================================== */
+
+#confessionScreen {
+
+  padding: 0;
+
+}
+
+
+/* 저녁 배경 */
+
+#confessionBackground {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  z-index: 0;
+
+}
+
+
+/* 저녁 분위기 */
+
+#confessionScreen::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(20,20,55,0.15),
+      rgba(20,15,50,0.55)
+    );
+
+  z-index: 1;
+
+  pointer-events: none;
+
+}
+
+
+/* 캐릭터를 어둡게 덮이지 않게 */
+
+#confessionJiwoo,
+#confessionYoungjun {
+
+  z-index: 3;
+
+}
+
+
+#confessionDialogueBox {
+
+  z-index: 200;
+
+}
+
+
+/* ==================================================
+   고백 선택
+================================================== */
+
+#confessionChoiceScreen {
+
+  padding: 25vh 20px 20px;
+
+  background:
+    linear-gradient(
+      #ffe3ef,
+      #ffd0e4
+    );
+
+}
+
+
+#confessionChoiceScreen h2 {
+
+  margin-bottom: 30px;
+
+}
+
+
+#happyChoice,
+#badChoice {
+
+  display: block;
+
+  width: 100%;
+
+  margin: 15px 0;
+
+  padding: 16px;
+
+  border-radius: 15px;
+
+  background: white;
+
+  border: 2px solid #ffd1e2;
+
+}
+
+
+/* ==================================================
+   HAPPY ENDING
+================================================== */
+
+#happyEndingScene {
+
+  background: #ffb6d9;
+
+  padding: 15px;
+
+  overflow-y: auto;
+
+}
+
+
+#happyEndingImage {
+
+  width: 100%;
+
+  max-height: 62vh;
+
+  object-fit: contain;
+
+}
+
+
+.happy-dialogue {
+
+  font-size: 19px;
+
+  line-height: 1.8;
+
+  margin-top: 10px;
+
+}
+
+
+#happyEndingTitle {
+
+  font-size: 38px;
+
+  font-weight: bold;
+
+  margin-top: 25px;
+
+  color: white;
+
+  text-shadow:
+    0 2px 5px rgba(0,0,0,0.15);
+
+}
+
+
+/* ==================================================
+   BAD ENDING
+================================================== */
+
+#badEndingScreen {
+
+  background: #292929;
+
+  color: white;
+
+  padding: 25vh 20px 20px;
+
+}
+
+
+.bad-dialogue {
+
+  font-size: 20px;
+
+  line-height: 2;
+
+}
+
+
+#badEndingTitle {
+
+  font-size: 38px;
+
+  font-weight: bold;
+
+  margin-top: 45px;
+
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
 <div id="game">
 
 
 <!-- ==================================================
-     시작 화면
+     시작
 ================================================== -->
 
 <div id="startScreen" class="screen">
 
-  <button id="startButton" type="button">
+  <button id="startButton">
 
     <img
       src="images/start photo.PNG"
@@ -529,8 +948,8 @@ button {
   <div class="dialogue-box">
 
     <div
-      class="dialogue-name"
       id="dialogueName"
+      class="dialogue-name"
     >
       지우
     </div>
@@ -578,9 +997,7 @@ button {
     <div
       id="morningName"
       class="dialogue-name"
-    >
-      지우
-    </div>
+    ></div>
 
     <div id="morningText"></div>
 
@@ -594,7 +1011,7 @@ button {
 
 
 <!-- ==================================================
-     학교 수업시간
+     학교
 ================================================== -->
 
 <div id="schoolScene" class="screen hidden">
@@ -610,7 +1027,6 @@ button {
     class="character"
     src="images/jiwoo-normal.PNG"
     alt="지우"
-    style="display:none;"
   >
 
   <img
@@ -624,7 +1040,7 @@ button {
   <img
     id="schoolSpecialImage"
     src="images/school-special-1.PNG"
-    alt="명장면"
+    alt="학교 명장면"
   >
 
   <button id="specialNextButton">
@@ -655,23 +1071,15 @@ button {
 
 
 <!-- ==================================================
-     체육시간 장면
+     체육시간
 ================================================== -->
 
-<div id="peScreen" class="screen" style="display:none;">
+<div id="peScreen" class="screen hidden">
 
   <img
     id="peBackground"
     src="images/school-gym.JPG"
     alt="체육시간"
-    style="
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      z-index:0;
-    "
   >
 
   <img
@@ -679,10 +1087,6 @@ button {
     class="character"
     src="images/jiwoo-normal.PNG"
     alt="지우"
-    style="
-      left:30%;
-      display:block;
-    "
   >
 
   <img
@@ -690,31 +1094,16 @@ button {
     class="character"
     src="images/youngjun-normal.png"
     alt="영준"
-    style="
-      left:70%;
-      display:none;
-    "
+    style="display:none;"
   >
 
   <img
     id="dodgeballImage"
     src="images/school-special-2.PNG"
-    alt="영준이가 지우 대신 공을 맞는 장면"
-    style="
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      z-index:100;
-      display:none;
-    "
+    alt="피구 명장면"
   >
 
-  <div
-    class="dialogue-box"
-    style="z-index:200;"
-  >
+  <div class="dialogue-box">
 
     <div
       id="peSpeaker"
@@ -733,7 +1122,7 @@ button {
 
 
 <!-- ==================================================
-     하교 장면
+     하교
 ================================================== -->
 
 <div id="afterSchoolScreen" class="screen hidden">
@@ -741,7 +1130,7 @@ button {
   <img
     id="afterSchoolBackground"
     src="images/school-classroom.JPG"
-    alt="하교 장면"
+    alt="하교"
   >
 
   <img
@@ -749,10 +1138,6 @@ button {
     class="character"
     src="images/jiwoo-normal.PNG"
     alt="지우"
-    style="
-      left:30%;
-      display:block;
-    "
   >
 
   <img
@@ -760,13 +1145,8 @@ button {
     class="character"
     src="images/youngjun-normal.png"
     alt="영준"
-    style="
-      left:70%;
-      display:none;
-    "
+    style="display:none;"
   >
-
-  <!-- 버스 명장면 -->
 
   <img
     id="afterSchoolSpecialImage"
@@ -777,7 +1157,6 @@ button {
   <button id="afterSchoolSpecialNext">
     ▶
   </button>
-
 
   <div
     id="afterSchoolDialogueBox"
@@ -800,11 +1179,14 @@ button {
 </div>
 
 
-<!-- ================================= -->
-<!-- ⭐ 도착지 고백 장면 -->
-<!-- ================================= -->
+<!-- ==================================================
+     🌆 고백 장면
+================================================== -->
 
-<div id="confessionScreen" class="screen hidden">
+<div
+  id="confessionScreen"
+  class="screen hidden"
+>
 
   <img
     id="confessionBackground"
@@ -817,7 +1199,6 @@ button {
     class="character"
     src="images/jiwoo-normal.PNG"
     alt="지우"
-    style="left:30%;"
   >
 
   <img
@@ -825,7 +1206,6 @@ button {
     class="character"
     src="images/youngjun-normal.png"
     alt="영준"
-    style="left:70%;"
   >
 
   <div
@@ -849,198 +1229,13 @@ button {
 </div>
 
 
-<!-- ================================= -->
-<!-- ⭐ 고백 선택지 -->
-<!-- ================================= -->
-
-<div id="confessionChoiceScreen" class="screen hidden">
-
-  <h2>지우의 대답</h2>
-
-  <button id="happyChoice">
-    좋아, 우리 사귀자
-  </button>
-
-  <button id="badChoice">
-    미안.. 난 아직 준비가 안 됐어
-  </button>
-
-</div>
-
-
-<!-- ================================= -->
-<!-- ⭐ 해피 엔딩 -->
-<!-- ================================= -->
-
-<div
-  id="happyEndingScene"
-  class="screen hidden"
->
-
-  <div
-    style="
-      background:#ffb6d9;
-      min-height:100vh;
-      text-align:center;
-      padding-top:20px;
-      box-sizing:border-box;
-    "
-  >
-
-    <img
-      src="images/school-special-6.PNG"
-      alt="해피엔딩 명장면"
-      style="
-        width:100%;
-        max-height:70vh;
-        object-fit:contain;
-      "
-    >
-
-    <p>영준</p>
-
-    <p>사랑해.. 지우야.</p>
-
-    <p>지우</p>
-
-    <p>나도 사랑해, 영준아..</p>
-
-    <div
-      style="
-        font-size:38px;
-        font-weight:bold;
-        margin-top:30px;
-      "
-    >
-      HAPPY ENDING
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- ================================= -->
-<!-- ⭐ 베드 엔딩 -->
-<!-- ================================= -->
-
-<div
-  id="badEndingScreen"
-  class="screen hidden"
->
-
-  <div
-    style="
-      background:#292929;
-      color:white;
-      min-height:100vh;
-      text-align:center;
-      padding-top:35vh;
-      box-sizing:border-box;
-    "
-  >
-
-    <p>영준</p>
-
-    <p>아.. 그래..?</p>
-
-    <p>
-      어쩔 수 없지..<br>
-      그래, 그냥 친구로 지내자..
-    </p>
-
-    <div
-      style="
-        font-size:40px;
-        font-weight:bold;
-        margin-top:50px;
-      "
-    >
-      BAD ENDING
-    </div>
-
-  </div>
-
-</div>
-
-
-</div>
-
-  <!-- ==================================================
-     고백 장면
-================================================== -->
-
-<div id="confessionScreen" class="screen hidden">
-
-  <img
-    src="images/bus-stop.JPG"
-    style="
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      position:absolute;
-      left:0;
-      top:0;
-    "
-  >
-
-  <img
-    id="confessionJiwoo"
-    class="character"
-    src="images/jiwoo-normal.PNG"
-    style="
-      left:30%;
-      display:none;
-    "
-  >
-
-  <img
-    id="confessionYoungjun"
-    class="character"
-    src="images/youngjun-normal.png"
-    style="
-      left:70%;
-      display:none;
-    "
-  >
-
-  <div
-    class="dialogue-box"
-    style="
-      position:absolute;
-      bottom:20px;
-      left:5%;
-      width:90%;
-    "
-  >
-
-    <div
-      id="confessionSpeaker"
-      class="dialogue-name"
-    ></div>
-
-    <div id="confessionText"></div>
-
-    <button id="confessionNext">
-      ▶
-    </button>
-
-  </div>
-
-</div>
-
-
 <!-- ==================================================
-     고백 선택지
+     💗 고백 선택
 ================================================== -->
 
 <div
   id="confessionChoiceScreen"
   class="screen hidden"
-  style="
-    text-align:center;
-    padding-top:25vh;
-  "
 >
 
   <h2>지우의 대답</h2>
@@ -1063,53 +1258,37 @@ button {
 
 
 <!-- ==================================================
-     HAPPY ENDING
+     🩷 HAPPY ENDING
 ================================================== -->
 
 <div
   id="happyEndingScene"
   class="screen hidden"
-  style="
-    background:#ffb6d9;
-    min-height:100vh;
-    text-align:center;
-    box-sizing:border-box;
-    padding:20px;
-  "
 >
 
   <img
+    id="happyEndingImage"
     src="images/school-special-6.PNG"
-    style="
-      width:100%;
-      max-height:65vh;
-      object-fit:contain;
-    "
+    alt="해피엔딩"
   >
 
-  <div style="font-size:20px; line-height:1.8;">
+  <div class="happy-dialogue">
 
     <div>영준</div>
 
     <div>
-      사랑해.. 지우야.
+      사랑해.. 지우야
     </div>
 
     <div>지우</div>
 
     <div>
-      나도 사랑해, 영준아..
+      나도 사랑해 영준아..
     </div>
 
   </div>
 
-  <div
-    style="
-      font-size:40px;
-      font-weight:bold;
-      margin-top:20px;
-    "
-  >
+  <div id="happyEndingTitle">
     HAPPY ENDING
   </div>
 
@@ -1117,56 +1296,41 @@ button {
 
 
 <!-- ==================================================
-     BAD ENDING
+     🩶 BAD ENDING
 ================================================== -->
 
 <div
   id="badEndingScreen"
   class="screen hidden"
-  style="
-    background:#292929;
-    color:white;
-    min-height:100vh;
-    text-align:center;
-    padding-top:30vh;
-    box-sizing:border-box;
-  "
 >
 
-  <div
-    style="
-      font-size:20px;
-      line-height:2;
-    "
-  >
+  <div class="bad-dialogue">
 
     <div>영준</div>
 
     <div>
-      아.. 그래..?
+      아..그래..?
     </div>
 
     <div>
-      어쩔 수 없지..
+      어쩔수 없지..
     </div>
 
     <div>
-      그래, 그냥 친구로 지내자..
+      그래 그냥 친구로 지내자..
     </div>
 
   </div>
 
-  <div
-    style="
-      font-size:40px;
-      font-weight:bold;
-      margin-top:50px;
-    "
-  >
+  <div id="badEndingTitle">
     BAD ENDING
   </div>
 
 </div>
+
+
+</div>
+
 
 <script>
 
@@ -1188,7 +1352,7 @@ function hideAllScreens() {
 
 
 /* ==================================================
-   시작 버튼
+   시작
 ================================================== */
 
 document
@@ -1222,10 +1386,11 @@ document
 
 
 /* ==================================================
-   GAME START → 프롤로그
+   프롤로그
 ================================================== */
 
 let dialogueIndex = 0;
+
 
 const dialogues = [
 
@@ -1264,19 +1429,10 @@ document
       .getElementById("dialogueNext")
       .style.display = "block";
 
-    document
-      .getElementById("jiwooCharacter")
-      .src =
-      "images/jiwoo-normal.PNG";
-
     updateDialogue();
 
   });
 
-
-/* ==================================================
-   프롤로그 ▶
-================================================== */
 
 document
   .getElementById("dialogueNext")
@@ -1318,16 +1474,6 @@ function updateDialogue() {
     .innerText =
     dialogues[dialogueIndex];
 
-
-  if (dialogueIndex >= 6) {
-
-    document
-      .getElementById("jiwooCharacter")
-      .src =
-      "images/jiwoo_sparkle.png";
-
-  }
-
 }
 
 
@@ -1336,6 +1482,7 @@ function updateDialogue() {
 ================================================== */
 
 let morningIndex = 0;
+
 
 const morningDialogues = [
 
@@ -1425,11 +1572,12 @@ document
 
 function updateMorningScene() {
 
-  const name =
-    morningDialogues[morningIndex][0];
+  const scene =
+    morningDialogues[morningIndex];
 
-  const text =
-    morningDialogues[morningIndex][1];
+  const name = scene[0];
+
+  const text = scene[1];
 
 
   document
@@ -1449,19 +1597,23 @@ function updateMorningScene() {
     document.getElementById("morningYoungjun");
 
 
+  jiwoo.style.display = "none";
+
+  youngjun.style.display = "none";
+
+
   if (name === "지우") {
 
     jiwoo.style.display = "block";
-    youngjun.style.display = "none";
 
     jiwoo.src =
       "images/jiwoo-normal.PNG";
 
   }
 
+
   else if (name === "영준") {
 
-    jiwoo.style.display = "none";
     youngjun.style.display = "block";
 
     youngjun.src =
@@ -1469,9 +1621,11 @@ function updateMorningScene() {
 
   }
 
+
   else if (name === "둘이 함께") {
 
     jiwoo.style.display = "block";
+
     youngjun.style.display = "block";
 
     jiwoo.src =
@@ -1480,27 +1634,19 @@ function updateMorningScene() {
     youngjun.src =
       "images/youngjun-embarrassed.png";
 
-    jiwoo.style.left = "30%";
-    youngjun.style.left = "70%";
-
-  }
-
-  else {
-
-    jiwoo.style.display = "none";
-    youngjun.style.display = "none";
-
   }
 
 }
 
 
 /* ==================================================
-   학교 수업시간
+   학교
 ================================================== */
 
 let schoolIndex = 0;
+
 let schoolChoice = 0;
+
 let schoolReplyShown = false;
 
 
@@ -1513,75 +1659,74 @@ function startSchoolScene() {
     .classList.remove("hidden");
 
   schoolIndex = 0;
+
   schoolChoice = 0;
+
   schoolReplyShown = false;
 
 
-  const background =
-    document.getElementById("schoolBackground");
-
-  const specialImage =
-    document.getElementById("schoolSpecialImage");
-
-  const specialNextButton =
-    document.getElementById("specialNextButton");
-
-  const jiwoo =
-    document.getElementById("schoolJiwoo");
-
-  const youngjun =
-    document.getElementById("schoolYoungjun");
-
-  const dialogueBox =
-    document.getElementById("schoolDialogueBox");
-
-  const nextButton =
-    document.getElementById("schoolNext");
+  document
+    .getElementById("schoolBackground")
+    .style.display = "block";
 
 
-  background.style.display = "block";
+  document
+    .getElementById("schoolSpecialImage")
+    .style.display = "none";
 
-  specialImage.style.display = "none";
 
-  specialNextButton.style.display = "none";
+  document
+    .getElementById("specialNextButton")
+    .style.display = "none";
 
-  dialogueBox.style.display = "block";
 
-  jiwoo.style.display = "block";
-  youngjun.style.display = "none";
+  document
+    .getElementById("schoolDialogueBox")
+    .style.display = "block";
 
-  nextButton.style.display = "block";
+
+  document
+    .getElementById("schoolJiwoo")
+    .style.display = "block";
+
+
+  document
+    .getElementById("schoolYoungjun")
+    .style.display = "none";
+
+
+  document
+    .getElementById("schoolNext")
+    .style.display = "block";
 
 
   document
     .getElementById("schoolChoices")
     .innerHTML = "";
 
+
   document
     .getElementById("schoolName")
     .innerText = "지우";
 
+
   document
     .getElementById("schoolText")
     .innerText =
-      "허.. 지각할 뻔했네.";
+    "허.. 지각할 뻔했네.";
 
 }
 
-
-/* ==================================================
-   학교 장면 진행
-================================================== */
 
 function nextSchoolScene() {
 
   const background =
     document.getElementById("schoolBackground");
 
-  const specialImage =
+  const special =
     document.getElementById("schoolSpecialImage");
 
-  const specialNextButton =
+  const specialButton =
     document.getElementById("specialNextButton");
 
   const jiwoo =
@@ -1590,7 +1735,7 @@ function nextSchoolScene() {
   const youngjun =
     document.getElementById("schoolYoungjun");
 
-  const dialogueBox =
+  const box =
     document.getElementById("schoolDialogueBox");
 
 
@@ -1600,70 +1745,85 @@ function nextSchoolScene() {
   if (schoolIndex === 1) {
 
     jiwoo.style.display = "none";
+
     youngjun.style.display = "block";
 
-    document.getElementById("schoolName").innerText = "영준";
+    document.getElementById("schoolName").innerText =
+      "영준";
 
     document.getElementById("schoolText").innerText =
       "그러게 누가 늦잠 자랬냐?";
 
     return;
+
   }
 
 
   if (schoolIndex === 2) {
 
     jiwoo.style.display = "block";
+
     youngjun.style.display = "none";
 
-    document.getElementById("schoolName").innerText = "지우";
+    document.getElementById("schoolName").innerText =
+      "지우";
 
     document.getElementById("schoolText").innerText =
       "너도 늦게 나온 주제에 왜 따지고 난리냐!";
 
     return;
+
   }
 
 
   if (schoolIndex === 3) {
 
     jiwoo.style.display = "none";
+
     youngjun.style.display = "block";
 
-    document.getElementById("schoolName").innerText = "영준";
+    document.getElementById("schoolName").innerText =
+      "영준";
 
     document.getElementById("schoolText").innerText =
       "난 너 기다렸는데?";
 
     return;
+
   }
 
 
   if (schoolIndex === 4) {
 
     jiwoo.style.display = "block";
+
     youngjun.style.display = "none";
 
-    document.getElementById("schoolName").innerText = "지우";
+    document.getElementById("schoolName").innerText =
+      "지우";
 
     document.getElementById("schoolText").innerText =
       "아 몰라 너도 늦은 건 똑같거든?!";
 
     return;
+
   }
 
 
   if (schoolIndex === 5) {
 
     jiwoo.style.display = "none";
+
     youngjun.style.display = "block";
 
-    document.getElementById("schoolName").innerText = "영준";
+    document.getElementById("schoolName").innerText =
+      "영준";
 
     document.getElementById("schoolText").innerText =
       "그런데…";
 
     return;
+
   }
 
 
@@ -1672,84 +1832,77 @@ function nextSchoolScene() {
     background.style.display = "none";
 
     jiwoo.style.display = "none";
+
     youngjun.style.display = "none";
 
-    dialogueBox.style.display = "none";
+    box.style.display = "none";
 
-    specialImage.style.display = "block";
+    special.style.display = "block";
 
-    specialNextButton.style.display = "block";
+    specialButton.style.display = "block";
 
     return;
+
   }
 
 
   if (schoolIndex === 7) {
 
-    specialImage.style.display = "none";
+    special.style.display = "none";
 
-    specialNextButton.style.display = "none";
+    specialButton.style.display = "none";
 
     background.style.display = "block";
 
     jiwoo.style.display = "none";
+
     youngjun.style.display = "block";
 
-    dialogueBox.style.display = "block";
+    box.style.display = "block";
 
-    document.getElementById("schoolName").innerText = "영준";
+    document.getElementById("schoolName").innerText =
+      "영준";
 
     document.getElementById("schoolText").innerText =
       "너 왜 아까 내가 너 기다린다고 했을 때 왜 이렇게 좋아했냐? 나 좋아하는 것 같이?";
 
-    document.getElementById("schoolChoices").innerHTML = "";
-
-    document.getElementById("schoolNext").style.display = "none";
+    document.getElementById("schoolNext").style.display =
+      "none";
 
     showSchoolChoices();
 
-    return;
   }
 
 }
 
 
-/* ==================================================
-   선택지 표시
-================================================== */
-
 function showSchoolChoices() {
 
-  document
-    .getElementById("schoolChoices")
-    .innerHTML = `
+  document.getElementById("schoolChoices").innerHTML = `
 
-      <button
-        class="school-choice"
-        onclick="chooseSchool(1)"
-      >
-        뭔 소리야, 나 너 안 좋아하거든?
-      </button>
+    <button
+      class="school-choice"
+      onclick="chooseSchool(1)"
+    >
+      뭔 소리야, 나 너 안 좋아하거든?
+    </button>
 
-      <button
-        class="school-choice"
-        onclick="chooseSchool(2)"
-      >
-        왜? 내가 너 좋아하길 바라는 거야?
-      </button>
+    <button
+      class="school-choice"
+      onclick="chooseSchool(2)"
+    >
+      왜? 내가 너 좋아하길 바라는 거야?
+    </button>
 
   `;
 
 }
 
 
-/* ==================================================
-   선택 결과
-================================================== */
-
 function chooseSchool(choice) {
 
   schoolChoice = choice;
+
   schoolReplyShown = false;
 
 
@@ -1759,50 +1912,48 @@ function chooseSchool(choice) {
   const youngjun =
     document.getElementById("schoolYoungjun");
 
-  const schoolChoices =
-    document.getElementById("schoolChoices");
 
-  const schoolNext =
-    document.getElementById("schoolNext");
-
-  const schoolName =
-    document.getElementById("schoolName");
-
-  const schoolText =
-    document.getElementById("schoolText");
+  document
+    .getElementById("schoolChoices")
+    .innerHTML = "";
 
 
-  schoolChoices.innerHTML = "";
-
-  schoolNext.style.display = "block";
+  document
+    .getElementById("schoolNext")
+    .style.display = "block";
 
 
   jiwoo.style.display = "block";
+
   youngjun.style.display = "none";
 
-  schoolName.innerText = "지우";
+
+  document
+    .getElementById("schoolName")
+    .innerText = "지우";
 
 
   if (choice === 1) {
 
-    schoolText.innerText =
+    document
+      .getElementById("schoolText")
+      .innerText =
       "뭔 소리야, 나 너 안 좋아하거든?";
 
   }
 
-  else if (choice === 2) {
 
-    schoolText.innerText =
+  else {
+
+    document
+      .getElementById("schoolText")
+      .innerText =
       "왜? 내가 너 좋아하길 바라는 거야?";
 
   }
 
 }
 
-
-/* ==================================================
-   학교 ▶ 버튼
-================================================== */
 
 document
   .getElementById("schoolNext")
@@ -1814,34 +1965,36 @@ document
     const youngjun =
       document.getElementById("schoolYoungjun");
 
-    const schoolName =
-      document.getElementById("schoolName");
 
-    const schoolText =
-      document.getElementById("schoolText");
-
-    const schoolChoices =
-      document.getElementById("schoolChoices");
-
-
-    if (schoolChoice !== 0 && !schoolReplyShown) {
+    if (
+      schoolChoice !== 0 &&
+      !schoolReplyShown
+    ) {
 
       jiwoo.style.display = "none";
+
       youngjun.style.display = "block";
 
-      schoolName.innerText = "영준";
+
+      document
+        .getElementById("schoolName")
+        .innerText = "영준";
 
 
       if (schoolChoice === 1) {
 
-        schoolText.innerText =
+        document
+          .getElementById("schoolText")
+          .innerText =
           "ㅋㅋㅋ 그래?";
 
       }
 
-      else if (schoolChoice === 2) {
+      else {
 
-        schoolText.innerText =
+        document
+          .getElementById("schoolText")
+          .innerText =
           "아..아니..그냥..물어본건데..";
 
       }
@@ -1849,26 +2002,12 @@ document
 
       schoolReplyShown = true;
 
-      schoolChoices.innerHTML = "";
-
       return;
 
     }
 
 
     if (schoolReplyShown) {
-
-      schoolChoice = 0;
-      schoolReplyShown = false;
-
-      schoolText.innerText =
-        "…….";
-
-      schoolName.innerText =
-        "지우";
-
-      jiwoo.style.display = "block";
-      youngjun.style.display = "none";
 
       startPEScene();
 
@@ -1882,10 +2021,6 @@ document
   });
 
 
-/* ==================================================
-   명장면 ▶ 버튼
-================================================== */
-
 document
   .getElementById("specialNextButton")
   .addEventListener("click", function() {
@@ -1898,32 +2033,11 @@ document
 
 
 /* ==================================================
-   체육시간
+   체육
 ================================================== */
 
-const peScreen =
-  document.getElementById("peScreen");
-
-const peSpeaker =
-  document.getElementById("peSpeaker");
-
-const peText =
-  document.getElementById("peText");
-
-const peNextButton =
-  document.getElementById("peNextButton");
-
-const dodgeballImage =
-  document.getElementById("dodgeballImage");
-
-const peJiwoo =
-  document.getElementById("peJiwoo");
-
-const peYoungjun =
-  document.getElementById("peYoungjun");
-
-
 let peIndex = 0;
+
 let peFinished = false;
 
 
@@ -1958,25 +2072,23 @@ const peScenes = [
 
 function startPEScene() {
 
+  hideAllScreens();
+
   document
-    .querySelectorAll(".screen")
-    .forEach(function(screen) {
-
-      screen.classList.add("hidden");
-      screen.style.display = "none";
-
-    });
-
-
-  peScreen.classList.remove("hidden");
-  peScreen.style.display = "block";
+    .getElementById("peScreen")
+    .classList.remove("hidden");
 
   peIndex = 0;
+
   peFinished = false;
 
-  dodgeballImage.style.display = "none";
+  document
+    .getElementById("dodgeballImage")
+    .style.display = "none";
 
-  peNextButton.textContent = "▶";
+  document
+    .getElementById("peNextButton")
+    .innerText = "▶";
 
   showPEScene();
 
@@ -1988,31 +2100,45 @@ function showPEScene() {
   const scene =
     peScenes[peIndex];
 
-  peSpeaker.textContent =
+  const speaker =
     scene[0];
 
-  peText.textContent =
+  const text =
     scene[1];
 
 
-  if (scene[0] === "지우") {
+  document
+    .getElementById("peSpeaker")
+    .innerText = speaker;
 
-    peJiwoo.style.display = "block";
-    peYoungjun.style.display = "none";
+
+  document
+    .getElementById("peText")
+    .innerText = text;
+
+
+  const jiwoo =
+    document.getElementById("peJiwoo");
+
+  const youngjun =
+    document.getElementById("peYoungjun");
+
+
+  jiwoo.style.display = "none";
+
+  youngjun.style.display = "none";
+
+
+  if (speaker === "지우") {
+
+    jiwoo.style.display = "block";
 
   }
 
-  else if (scene[0] === "영준") {
 
-    peJiwoo.style.display = "none";
-    peYoungjun.style.display = "block";
+  else if (speaker === "영준") {
 
-  }
-
-  else {
-
-    peJiwoo.style.display = "none";
-    peYoungjun.style.display = "none";
+    youngjun.style.display = "block";
 
   }
 
@@ -2022,28 +2148,26 @@ function showPEScene() {
     peIndex <= 7
   ) {
 
-    dodgeballImage.style.display =
-      "block";
+    document
+      .getElementById("dodgeballImage")
+      .style.display = "block";
 
   }
 
   else {
 
-    dodgeballImage.style.display =
-      "none";
+    document
+      .getElementById("dodgeballImage")
+      .style.display = "none";
 
   }
 
 }
 
 
-/* ==================================================
-   체육시간 ▶
-================================================== */
-
-peNextButton.addEventListener(
-  "click",
-  function() {
+document
+  .getElementById("peNextButton")
+  .addEventListener("click", function() {
 
     if (peFinished) {
 
@@ -2061,13 +2185,18 @@ peNextButton.addEventListener(
 
       peFinished = true;
 
-      peSpeaker.textContent =
-        "지우";
+      document
+        .getElementById("peSpeaker")
+        .innerText = "지우";
 
-      peText.textContent =
+      document
+        .getElementById("peText")
+        .innerText =
         "……오늘 있었던 일이 계속 생각나..";
 
-      peNextButton.textContent =
+      document
+        .getElementById("peNextButton")
+        .innerText =
         "다음 ▶";
 
       return;
@@ -2079,187 +2208,104 @@ peNextButton.addEventListener(
 
     showPEScene();
 
-  }
-);
+  });
 
 
 /* ==================================================
-   하교 장면
+   하교
 ================================================== */
-
-const afterSchoolScreen =
-  document.getElementById("afterSchoolScreen");
-
-const afterSchoolBackground =
-  document.getElementById("afterSchoolBackground");
-
-const afterSchoolJiwoo =
-  document.getElementById("afterSchoolJiwoo");
-
-const afterSchoolYoungjun =
-  document.getElementById("afterSchoolYoungjun");
-
-const afterSchoolSpecialImage =
-  document.getElementById("afterSchoolSpecialImage");
-
-const afterSchoolSpecialNext =
-  document.getElementById("afterSchoolSpecialNext");
-
-const afterSchoolDialogueBox =
-  document.getElementById("afterSchoolDialogueBox");
-
-const afterSchoolSpeaker =
-  document.getElementById("afterSchoolSpeaker");
-
-const afterSchoolText =
-  document.getElementById("afterSchoolText");
-
-const afterSchoolNext =
-  document.getElementById("afterSchoolNext");
-
 
 let afterSchoolIndex = 0;
+
 let afterSchoolSpecialShown = false;
 
+let afterSchoolEndingStarted = false;
 
-/* ==================================================
-   하교 대사
-================================================== */
 
 const afterSchoolScenes = [
 
-  [
-    "나레이션",
-    "수업이 끝나고 어느새 하교 시간이 되었다."
-  ],
+  ["나레이션", "수업이 끝나고 어느새 하교 시간이 되었다."],
 
-  [
-    "선생님",
-    "자, 오늘 수업은 여기까지다."
-  ],
+  ["선생님", "자, 오늘 수업은 여기까지다."],
 
-  [
-    "선생님",
-    "다들 조심히 들어가고, 내일 보자."
-  ],
+  ["선생님", "다들 조심히 들어가고, 내일 보자."],
 
-  [
-    "학생들",
-    "감사합니다! 안녕히 가세요!"
-  ],
+  ["학생들", "감사합니다! 안녕히 가세요!"],
 
-  [
-    "지우",
-    "후… 오늘 하루도 끝났네."
-  ],
+  ["지우", "후… 오늘 하루도 끝났네."],
 
-  [
-    "나레이션",
-    "지우는 천천히 가방을 챙겼다."
-  ],
+  ["나레이션", "지우는 천천히 가방을 챙겼다."],
 
-  [
-    "지우",
-    "오늘따라 왜 이렇게 피곤하지…"
-  ],
+  ["지우", "오늘따라 왜 이렇게 피곤하지…"],
 
-  [
-    "나레이션",
-    "지우는 교실을 나와 집으로 향했다."
-  ],
+  ["나레이션", "지우는 교실을 나와 집으로 향했다."],
 
-  [
-    "나레이션",
-    "버스정류장에 도착한 지우는 버스를 기다렸다."
-  ],
+  ["나레이션", "버스정류장에 도착한 지우는 버스를 기다렸다."],
 
-  [
-    "지우",
-    "오늘 있었던 일… 진짜 이상하네."
-  ],
+  ["지우", "오늘 있었던 일… 진짜 이상하네."],
 
-  [
-    "지우",
-    "영준이가 왜 나 대신 공을 맞아준 거지…?"
-  ],
+  ["지우", "영준이가 왜 나 대신 공을 맞아준 거지…?"],
 
-  [
-    "나레이션",
-    "그때, 지우가 기다리던 버스가 도착했다."
-  ],
+  ["나레이션", "그때, 지우가 기다리던 버스가 도착했다."],
 
-  [
-    "지우",
-    "휴… 앉을 자리도 있네."
-  ],
+  ["지우", "휴… 앉을 자리도 있네."],
 
-  [
-    "나레이션",
-    "지우는 창가 쪽 자리에 앉았다."
-  ],
+  ["나레이션", "지우는 창가 쪽 자리에 앉았다."],
 
-  [
-    "지우",
-    "……그런데 왜 자꾸 영준이가 생각나는 거야."
-  ]
+  ["지우", "……그런데 왜 자꾸 영준이가 생각나는 거야."]
 
 ];
 
 
-/* ==================================================
-   하교 시작
-================================================== */
-
 function startAfterSchoolScene() {
 
+  hideAllScreens();
+
   document
-    .querySelectorAll(".screen")
-    .forEach(function(screen) {
+    .getElementById("afterSchoolScreen")
+    .classList.remove("hidden");
 
-      screen.classList.add("hidden");
-      screen.style.display = "";
-
-    });
-
-
-  afterSchoolScreen.classList.remove("hidden");
 
   afterSchoolIndex = 0;
 
   afterSchoolSpecialShown = false;
 
-  afterSchoolBackground.src =
-    "images/school-classroom.JPG";
+  afterSchoolEndingStarted = false;
 
-  afterSchoolSpecialImage.style.display =
-    "none";
 
-  afterSchoolSpecialNext.style.display =
-    "none";
+  const background =
+    document.getElementById("afterSchoolBackground");
 
-  afterSchoolDialogueBox.style.display =
-    "block";
 
-  afterSchoolNext.style.display =
-    "block";
+  background.style.display = "block";
 
-  afterSchoolJiwoo.style.display =
-    "block";
+  background.style.filter = "";
 
-  afterSchoolYoungjun.style.display =
-    "none";
 
-  afterSchoolNext.textContent =
-    "▶";
+  document
+    .getElementById("afterSchoolSpecialImage")
+    .style.display = "none";
+
+
+  document
+    .getElementById("afterSchoolSpecialNext")
+    .style.display = "none";
+
+
+  document
+    .getElementById("afterSchoolDialogueBox")
+    .style.display = "block";
+
+
+  document
+    .getElementById("afterSchoolNext")
+    .style.display = "block";
+
 
   showAfterSchoolScene();
 
 }
 
-
-/* ==================================================
-   하교 장면 표시
-================================================== */
 
 function showAfterSchoolScene() {
 
@@ -2273,21 +2319,28 @@ function showAfterSchoolScene() {
     scene[1];
 
 
-  afterSchoolSpeaker.textContent =
-    speaker;
-
-  afterSchoolText.textContent =
-    text;
+  document
+    .getElementById("afterSchoolSpeaker")
+    .innerText = speaker;
 
 
-  /* =========================
-     배경 전환
-  ========================= */
+  document
+    .getElementById("afterSchoolText")
+    .innerText = text;
+
+
+  const background =
+    document.getElementById("afterSchoolBackground");
+
+
+  /* 배경 */
 
   if (afterSchoolIndex <= 7) {
 
-    afterSchoolBackground.src =
+    background.src =
       "images/school-classroom.JPG";
+
+    background.style.filter = "";
 
   }
 
@@ -2296,70 +2349,64 @@ function showAfterSchoolScene() {
     afterSchoolIndex <= 10
   ) {
 
-    afterSchoolBackground.src =
+    background.src =
       "images/bus-stop.JPG";
 
-  }
-
-  else if (
-    afterSchoolIndex >= 11
-  ) {
-
-    afterSchoolBackground.src =
-      "images/bus-inside.JPG";
-
-  }
-
-
-  /* =========================
-     캐릭터
-  ========================= */
-
-  if (speaker === "지우") {
-
-    afterSchoolJiwoo.style.display =
-      "block";
-
-    afterSchoolYoungjun.style.display =
-      "none";
-
-  }
-
-  else if (speaker === "영준") {
-
-    afterSchoolJiwoo.style.display =
-      "none";
-
-    afterSchoolYoungjun.style.display =
-      "block";
+    background.style.filter = "";
 
   }
 
   else {
 
-    afterSchoolJiwoo.style.display =
-      "none";
+    background.src =
+      "images/bus-inside.JPG";
 
-    afterSchoolYoungjun.style.display =
-      "none";
+    background.style.filter = "";
+
+  }
+
+
+  /* 캐릭터 */
+
+  const jiwoo =
+    document.getElementById("afterSchoolJiwoo");
+
+  const youngjun =
+    document.getElementById("afterSchoolYoungjun");
+
+
+  jiwoo.style.display = "none";
+
+  youngjun.style.display = "none";
+
+
+  if (speaker === "지우") {
+
+    jiwoo.style.display = "block";
+
+    jiwoo.src =
+      "images/jiwoo-normal.PNG";
+
+  }
+
+
+  else if (speaker === "영준") {
+
+    youngjun.style.display = "block";
+
+    youngjun.src =
+      "images/youngjun-normal.png";
 
   }
 
 }
 
 
-/* ==================================================
-   하교 ▶ 버튼
-================================================== */
+document
+  .getElementById("afterSchoolNext")
+  .addEventListener("click", function() {
 
-afterSchoolNext.addEventListener(
-  "click",
-  function() {
-
-    /*
-       마지막 대사 다음
-       버스 명장면 표시
-    */
+    /* 마지막 대사 → 버스 명장면 */
 
     if (
       afterSchoolIndex ===
@@ -2373,130 +2420,198 @@ afterSchoolNext.addEventListener(
     }
 
 
+    /* 버스 명장면 다음 → 고백 */
+
+    if (afterSchoolSpecialShown) {
+
+      startConfessionScene();
+
+      return;
+
+    }
+
+
     afterSchoolIndex++;
 
     showAfterSchoolScene();
 
-  }
-);
+  });
 
-
-/* ==================================================
-   버스 명장면
-================================================== */
 
 function showAfterSchoolSpecial() {
 
   afterSchoolSpecialShown = true;
 
 
-  afterSchoolBackground.style.display =
-    "none";
-
-  afterSchoolJiwoo.style.display =
-    "none";
-
-  afterSchoolYoungjun.style.display =
-    "none";
-
-  afterSchoolDialogueBox.style.display =
-    "none";
-
-  afterSchoolNext.style.display =
-    "none";
+  document
+    .getElementById("afterSchoolBackground")
+    .style.display = "none";
 
 
-  afterSchoolSpecialImage.style.display =
-    "block";
+  document
+    .getElementById("afterSchoolJiwoo")
+    .style.display = "none";
 
-  afterSchoolSpecialNext.style.display =
-    "block";
+
+  document
+    .getElementById("afterSchoolYoungjun")
+    .style.display = "none";
+
+
+  document
+    .getElementById("afterSchoolDialogueBox")
+    .style.display = "none";
+
+
+  document
+    .getElementById("afterSchoolNext")
+    .style.display = "none";
+
+
+  document
+    .getElementById("afterSchoolSpecialImage")
+    .style.display = "block";
+
+
+  document
+    .getElementById("afterSchoolSpecialNext")
+    .style.display = "block";
 
 }
 
 
-/* ==================================================
-   버스 명장면 ▶
-================================================== */
+document
+  .getElementById("afterSchoolSpecialNext")
+  .addEventListener("click", function() {
 
-afterSchoolSpecialNext.addEventListener(
-  "click",
-  function() {
-
-    afterSchoolSpecialImage.style.display =
-      "none";
-
-    afterSchoolSpecialNext.style.display =
-      "none";
-
-    afterSchoolBackground.style.display =
-      "block";
-
-    afterSchoolDialogueBox.style.display =
-      "block";
-
-    afterSchoolJiwoo.style.display =
-      "block";
-
-    afterSchoolYoungjun.style.display =
-      "none";
+    document
+      .getElementById("afterSchoolSpecialImage")
+      .style.display = "none";
 
 
-    afterSchoolSpeaker.textContent =
+    document
+      .getElementById("afterSchoolSpecialNext")
+      .style.display = "none";
+
+
+    document
+      .getElementById("afterSchoolBackground")
+      .style.display = "block";
+
+
+    document
+      .getElementById("afterSchoolDialogueBox")
+      .style.display = "block";
+
+
+    document
+      .getElementById("afterSchoolJiwoo")
+      .style.display = "block";
+
+
+    document
+      .getElementById("afterSchoolYoungjun")
+      .style.display = "none";
+
+
+    document
+      .getElementById("afterSchoolSpeaker")
+      .innerText =
       "지우";
 
-    afterSchoolText.textContent =
+
+    document
+      .getElementById("afterSchoolText")
+      .innerText =
       "……어?";
 
 
-    afterSchoolNext.style.display =
-      "block";
-
-    afterSchoolNext.textContent =
-      "▶";
+    document
+      .getElementById("afterSchoolNext")
+      .style.display = "block";
 
 
-    /*
-       다음 장면을 위한 새로운 상태
-    */
+    document
+      .getElementById("afterSchoolNext")
+      .innerText = "▶";
 
-    afterSchoolIndex =
-      afterSchoolScenes.length;
+  });
 
-    afterSchoolNext.onclick = function() {
 
-  startConfessionScene();
-
-};
-
-  }
-);
-
-  /* ==================================================
-   도착지 → 저녁 하교 → 영준 고백
+/* ==================================================
+   🌆 고백 장면
 ================================================== */
 
 let confessionIndex = 0;
 
+
 const confessionScenes = [
 
-  ["나레이션", "버스에서 내린 지우와 영준은 나란히 집으로 향했다."],
+  [
+    "나레이션",
+    "버스에서 내린 지우와 영준은 나란히 집으로 향했다."
+  ],
 
-  ["나레이션", "어느덧 저녁이 되고, 주변은 어둑어둑해졌다."],
+  [
+    "나레이션",
+    "둘은 아무 말 없이 천천히 길을 걸었다."
+  ],
 
-  ["지우", "오늘 하루가 정말 길었던 것 같아."],
+  [
+    "나레이션",
+    "어느덧 해가 지고 주변은 어둑어둑해졌다."
+  ],
 
-  ["영준", "……"],
+  [
+    "지우",
+    "오늘 하루가 정말 길었던 것 같아."
+  ],
 
-  ["지우", "응? 영준아, 왜 그래?"],
+  [
+    "영준",
+    "……"
+  ],
 
-  ["나레이션", "영준은 잠시 걸음을 멈췄다."],
+  [
+    "지우",
+    "응? 영준아, 왜 그래?"
+  ],
 
-  ["나레이션", "영준의 볼이 붉어졌다."],
+  [
+    "나레이션",
+    "영준은 잠시 걸음을 멈췄다."
+  ],
 
-  ["영준", "야, 최지우.."],
+  [
+    "나레이션",
+    "영준의 볼이 붉어졌다."
+  ],
 
-  ["영준", "나.. 너 좋아해.."]
+  [
+    "영준",
+    "야, 최지우.."
+  ],
+
+  [
+    "영준",
+    "나.. 너 좋아해.."
+
+  ],
+
+  [
+    "지우",
+    "……!"
+  ],
+
+  [
+    "나레이션",
+    "지우의 얼굴도 금세 붉어졌다."
+  ],
+
+  [
+    "지우",
+    "……나 어떡하지?"
+  ]
 
 ];
 
@@ -2509,17 +2624,15 @@ function startConfessionScene() {
     .getElementById("confessionScreen")
     .classList.remove("hidden");
 
+
   confessionIndex = 0;
 
-  document
-    .getElementById("confessionJiwoo")
-    .src =
-    "images/jiwoo-normal.PNG";
 
   document
-    .getElementById("confessionYoungjun")
+    .getElementById("confessionBackground")
     .src =
-    "images/youngjun-normal.png";
+    "images/bus-stop.JPG";
+
 
   showConfessionScene();
 
@@ -2538,6 +2651,13 @@ function showConfessionScene() {
     scene[1];
 
 
+  const jiwoo =
+    document.getElementById("confessionJiwoo");
+
+  const youngjun =
+    document.getElementById("confessionYoungjun");
+
+
   document
     .getElementById("confessionSpeaker")
     .innerText =
@@ -2550,39 +2670,60 @@ function showConfessionScene() {
     text;
 
 
-  const jiwoo =
-    document.getElementById("confessionJiwoo");
-
-  const youngjun =
-    document.getElementById("confessionYoungjun");
-
-
   jiwoo.style.display = "none";
+
   youngjun.style.display = "none";
 
+
+  /* 지우 */
 
   if (speaker === "지우") {
 
     jiwoo.style.display = "block";
 
+    jiwoo.src =
+      "images/jiwoo-normal.PNG";
+
   }
 
-  else if (speaker === "영준") {
+
+  /* 영준 */
+
+  if (speaker === "영준") {
 
     youngjun.style.display = "block";
 
+    youngjun.src =
+      "images/youngjun-normal.png";
+
   }
 
 
-  /* 영준이 고백하는 순간 설렘 표정 */
+  /* 영준 고백 → 설렘 */
 
-  if (confessionIndex >= 7) {
+  if (
+    confessionIndex >= 8 &&
+    confessionIndex <= 9
+  ) {
+
+    youngjun.style.display = "block";
 
     youngjun.src =
       "images/youngjun-embarrassed.png";
 
-    youngjun.style.display =
-      "block";
+  }
+
+
+  /* 지우 설렘 */
+
+  if (
+    confessionIndex >= 10
+  ) {
+
+    jiwoo.style.display = "block";
+
+    jiwoo.src =
+      "images/jiwoo-embarrassed.png";
 
   }
 
@@ -2591,76 +2732,67 @@ function showConfessionScene() {
 
 document
   .getElementById("confessionNext")
-  .addEventListener(
-    "click",
-    function() {
+  .addEventListener("click", function() {
 
-      if (
-        confessionIndex <
-        confessionScenes.length - 1
-      ) {
+    if (
+      confessionIndex <
+      confessionScenes.length - 1
+    ) {
 
-        confessionIndex++;
+      confessionIndex++;
 
-        showConfessionScene();
+      showConfessionScene();
 
-        return;
-
-      }
-
-
-      /* 고백 후 선택지 화면 */
-
-      hideAllScreens();
-
-      document
-        .getElementById("confessionChoiceScreen")
-        .classList.remove("hidden");
+      return;
 
     }
-  );
+
+
+    hideAllScreens();
+
+    document
+      .getElementById("confessionChoiceScreen")
+      .classList.remove("hidden");
+
+  });
 
 
 /* ==================================================
-   좋아, 우리 사귀자 → HAPPY ENDING
+   💗 좋아, 우리 사귀자
 ================================================== */
 
 document
   .getElementById("happyChoice")
-  .addEventListener(
-    "click",
-    function() {
+  .addEventListener("click", function() {
 
-      hideAllScreens();
+    hideAllScreens();
 
-      document
-        .getElementById("happyEndingScene")
-        .classList.remove("hidden");
+    document
+      .getElementById("happyEndingScene")
+      .classList.remove("hidden");
 
-    }
-  );
+  });
 
 
 /* ==================================================
-   미안.. 난 아직 준비가 안 됐어 → BAD ENDING
+   🩶 미안.. 난 아직 준비가 안 됐어
 ================================================== */
 
 document
   .getElementById("badChoice")
-  .addEventListener(
-    "click",
-    function() {
+  .addEventListener("click", function() {
 
-      hideAllScreens();
+    hideAllScreens();
 
-      document
-        .getElementById("badEndingScreen")
-        .classList.remove("hidden");
+    document
+      .getElementById("badEndingScreen")
+      .classList.remove("hidden");
 
-    }
-  );
+  });
 
 </script>
 
+
 </body>
+
 </html>
