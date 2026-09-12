@@ -1179,18 +1179,16 @@ button {
 </div>
 
 
-<!-- ==================================================
-     🌆 고백 장면
+  <!-- ==================================================
+     ⭐ 도착 후 고백 장면
 ================================================== -->
 
-<div
-  id="confessionScreen"
-  class="screen hidden"
->
+<div id="confessionScreen" class="screen hidden">
 
+  <!-- 세로형 저녁 배경 -->
   <img
     id="confessionBackground"
-    src="images/bus-stop.JPG"
+    src="images/evening-home-road.PNG"
     alt="저녁 하교길"
   >
 
@@ -1199,6 +1197,7 @@ button {
     class="character"
     src="images/jiwoo-normal.PNG"
     alt="지우"
+    style="left:30%; display:none;"
   >
 
   <img
@@ -1206,6 +1205,7 @@ button {
     class="character"
     src="images/youngjun-normal.png"
     alt="영준"
+    style="left:70%; display:none;"
   >
 
   <div
@@ -1230,12 +1230,13 @@ button {
 
 
 <!-- ==================================================
-     💗 고백 선택
+     ⭐ 고백 선택지
 ================================================== -->
 
 <div
   id="confessionChoiceScreen"
   class="screen hidden"
+  style="padding-top:25vh;"
 >
 
   <h2>지우의 대답</h2>
@@ -1258,37 +1259,53 @@ button {
 
 
 <!-- ==================================================
-     🩷 HAPPY ENDING
+     ⭐ HAPPY ENDING
 ================================================== -->
 
 <div
   id="happyEndingScene"
   class="screen hidden"
+  style="
+    background:#ffb6d9;
+    min-height:100vh;
+    padding:20px;
+  "
 >
 
   <img
-    id="happyEndingImage"
     src="images/school-special-6.PNG"
     alt="해피엔딩"
+    style="
+      width:100%;
+      max-height:65vh;
+      object-fit:contain;
+    "
   >
 
-  <div class="happy-dialogue">
+  <div
+    style="
+      font-size:20px;
+      line-height:1.8;
+    "
+  >
 
     <div>영준</div>
 
-    <div>
-      사랑해.. 지우야
-    </div>
+    <div>사랑해.. 지우야</div>
 
     <div>지우</div>
 
-    <div>
-      나도 사랑해 영준아..
-    </div>
+    <div>나도 사랑해 영준아..</div>
 
   </div>
 
-  <div id="happyEndingTitle">
+  <div
+    style="
+      font-size:40px;
+      font-weight:bold;
+      margin-top:25px;
+    "
+  >
     HAPPY ENDING
   </div>
 
@@ -1296,41 +1313,48 @@ button {
 
 
 <!-- ==================================================
-     🩶 BAD ENDING
+     ⭐ BAD ENDING
 ================================================== -->
 
 <div
   id="badEndingScreen"
   class="screen hidden"
+  style="
+    background:#292929;
+    color:white;
+    min-height:100vh;
+    padding-top:30vh;
+  "
 >
 
-  <div class="bad-dialogue">
+  <div
+    style="
+      font-size:20px;
+      line-height:2;
+    "
+  >
 
     <div>영준</div>
 
-    <div>
-      아..그래..?
-    </div>
+    <div>아..그래..?</div>
 
-    <div>
-      어쩔수 없지..
-    </div>
+    <div>어쩔수 없지..</div>
 
-    <div>
-      그래 그냥 친구로 지내자..
-    </div>
+    <div>그래 그냥 친구로 지내자..</div>
 
   </div>
 
-  <div id="badEndingTitle">
+  <div
+    style="
+      font-size:40px;
+      font-weight:bold;
+      margin-top:50px;
+    "
+  >
     BAD ENDING
   </div>
 
 </div>
-
-
-</div>
-
 
 <script>
 
