@@ -1218,7 +1218,7 @@ button {
   <!-- 세로형 저녁 배경 -->
   <img
     id="confessionBackground"
-    src="images/evening-home-road.PNG"
+    src="images/night.JPG"
     alt="저녁 하교길"
   >
 
@@ -2099,7 +2099,7 @@ const peScenes = [
 
   ["지우", "체육시간이네..."],
 
-  ["지우", "하.., 오늘 운동장에서 피구를 하는 날이네.."],
+  ["지우", "하.., 오늘 운동장에서 피구를 하는 날이잖아ㅠ.."],
 
   ["나레이션", "친구들과 게임을 하던 중……"],
 
@@ -2107,9 +2107,9 @@ const peScenes = [
 
   ["영준", "……지우야!"],
 
-  ["지우", "어?!"],
+  ["지우", "꺄악!!"],
 
-  ["지우", "영준아!!"],
+  ["지우", "!!..영..영준아!"],
 
   ["영준", "……괜찮아?"],
 
@@ -2286,7 +2286,7 @@ const afterSchoolScenes = [
 
   ["학생들", "감사합니다! 안녕히 가세요!"],
 
-  ["지우", "후… 오늘 하루도 끝났네."],
+  ["지우", "후… 오늘 하루도 끝났다."],
 
   ["나레이션", "지우는 천천히 가방을 챙겼다."],
 
@@ -2296,17 +2296,27 @@ const afterSchoolScenes = [
 
   ["나레이션", "버스정류장에 도착한 지우는 버스를 기다렸다."],
 
-  ["지우", "오늘 있었던 일… 진짜 이상하네."],
+  ["지우", "오늘 있었던 일… 진짜 이상하네..?"],
 
   ["지우", "영준이가 왜 나 대신 공을 맞아준 거지…?"],
 
   ["나레이션", "그때, 지우가 기다리던 버스가 도착했다."],
 
-  ["지우", "휴… 앉을 자리도 있네."],
+  ["지우", "휴… 앉을 자리도 별로 없네.."],
 
   ["나레이션", "지우는 창가 쪽 자리에 앉았다."],
 
-  ["지우", "……그런데 왜 자꾸 영준이가 생각나는 거야."]
+  ["영준", "? 미리 와 있었네?"]
+
+  ["지우", "어"]
+
+  ["영준", "야 나 니 옆에서 좀 잔다"]
+
+  ["지우", "알아서 하세요~"]
+
+  ["지우", "……그런데 왜 자꾸 걔가 생각나는 걸까."]
+
+  
 
 ];
 
@@ -2624,7 +2634,19 @@ const confessionScenes = [
 
   ["영준", "야, 최지우.."],
 
-  ["영준", "나.. 너 좋아해.."]
+  ["지우", "응?"],
+
+  ["영준", "나.. 너 좋아해.."],
+
+  ["지우", "....뭐..?"],
+
+  ["영준", "...나 원래..사랑이란거..잘 몰랐거든?"],
+
+  ["영준", "근데..너를 본 순간 알게 된거 같아.."],
+
+  ["영준", "내 고백..받아줄래..?"],
+
+  ["지우", "어떻게 하지..?"]
 
 ];
 
@@ -2695,7 +2717,7 @@ function showConfessionScene() {
   if (confessionIndex >= 6) {
 
     youngjun.src =
-      "images/youngjun-embarrassed.png";
+      "images/youngjun-sparkle.png";
 
     youngjun.style.display = "block";
 
@@ -2707,7 +2729,7 @@ function showConfessionScene() {
   if (confessionIndex === 8) {
 
     jiwoo.src =
-      "images/jiwoo-embarrassed.png";
+      "images/jiwoo-sparkle.png";
 
     jiwoo.style.display = "block";
 
@@ -2750,7 +2772,6 @@ document
 
   });
 
-
 /* ==================================================
    ❤️ 좋아, 우리 사귀자
 ================================================== */
@@ -2766,10 +2787,73 @@ document
   });
 
 
+let happyEndingIndex = 0;
+
+const happyEndingScenes = [
+  ["영준", "사랑해..지우야"],
+  ["지우", "나도 사랑해 영준아.."]
+];
+
+
 function showHappyEnding() {
 
   const screen =
     document.getElementById("happyEndingScene");
+
+  screen.classList.remove("hidden");
+
+  happyEndingIndex = 0;
+
+  showHappyDialogue();
+
+}
+
+
+function showHappyDialogue() {
+
+  const scene =
+    happyEndingScenes[happyEndingIndex];
+
+  document.getElementById("happySpeaker").innerText =
+    scene[0];
+
+  document.getElementById("happyText").innerText =
+    scene[1];
+
+}
+
+
+/* ▶ 버튼을 누르면 다음 명장면 */
+
+document
+  .getElementById("happyNext")
+  .addEventListener("click", function() {
+
+    if (happyEndingIndex < happyEndingScenes.length - 1) {
+
+      happyEndingIndex++;
+
+      showHappyDialogue();
+
+    } else {
+
+      startFinalEnding();
+
+    }
+
+  });
+
+
+/* ==================================================
+   🎬 최종 엔딩
+================================================== */
+
+function startFinalEnding() {
+
+  hideAllScreens();
+
+  const screen =
+    document.getElementById("finalEndingScreen");
 
   screen.classList.remove("hidden");
 
@@ -2799,7 +2883,7 @@ function showBadEnding() {
   screen.classList.remove("hidden");
 
 }
-  
+
 </script>
 
 
