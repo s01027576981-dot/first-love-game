@@ -1606,16 +1606,38 @@ document
 
   });
 
-
 function updateDialogue() {
 
-  document
-    .getElementById("dialogueText")
-    .innerText =
+  const text =
+    document.getElementById("dialogueText");
+
+  const jiwoo =
+    document.getElementById("jiwooCharacter");
+
+
+  text.innerText =
     dialogues[dialogueIndex];
 
-}
 
+  /* =========================
+     지우 표정 변경
+  ========================= */
+
+  if (dialogueIndex >= 6) {
+
+    // "그런데 어느 순간부터……"부터 설렘 표정
+    jiwoo.src =
+      "images/jiwoo_sparkle.png";
+
+  } else {
+
+    // 그 전까지는 기본 표정
+    jiwoo.src =
+      "images/jiwoo-normal.PNG";
+
+  }
+
+}
 
 /* ==================================================
    등굣길
